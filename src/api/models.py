@@ -78,7 +78,7 @@ class Rentas(db.Model):
 
 class Sport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.Integer, nullable=False)
+    type = db.Column(db.String, nullable=False)
 
     def serialize(self):
         return {

@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint, abort
-from api.models import db, User
+from api.models import db, User, Canchas, Sport
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -52,3 +52,38 @@ def create_user():
     db.session.commit()
 
     return jsonify(newUser.serialize())
+
+
+
+
+@api.route('/canchas', methods=['GET'])
+def get_canchas():
+
+    canchas = Canchas.query.all()
+    return jsonify([cancha.serialize() for cancha in canchas]), 200
+
+@api.route('/canchas', methods=['POST'])
+def create_cancha():
+
+    location = request.json.get("location")
+    name = request.json.get("name")
+    user_id = request.json.get("user_id")
+    sport_id = request.json.get("sport_id")
+
+    newCancha = Canchas(location=location, name=name, user_id=user_id, sport_id=sport_id)
+
+    db.session.add(newCancha)
+    db.session.commit()
+    return jsonify({"message": "Cancha created successfully"})
+
+
+@api.route('/sport', methods=['POST'])
+def Sports():
+
+    type = request.json.get("type")
+
+    newSport = Sport(type=type)
+
+    db.session.add(newSport)
+    db.session.commit()
+    return jsonify({"message": "Sport created successfully"})
