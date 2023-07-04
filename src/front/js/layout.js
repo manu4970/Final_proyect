@@ -5,7 +5,7 @@ import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
 
 import InformationCard from "./component/BigCardInformation";
-import { Profile } from "./pages/Profile-Protected";
+import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
 import RenderCanchas from "./pages/canchas";
 import { Demo } from "./pages/demo";
@@ -15,11 +15,7 @@ import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { Profile } from "./pages/Profile-Protected";
-import RenderCanchas from "./pages/canchas";
 import RentInformationCard from "./component/BigCardInformation";
-import { AddCanchas } from "./pages/addCanchas";
-import ForTesting from "./pages/forTesting"
 import { Footer } from "./component/footer";
 
 
