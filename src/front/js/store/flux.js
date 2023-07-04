@@ -204,6 +204,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("error en login");
 				}
 			},
+			postCanchas: async (disponibility, is_available, cacha_id, date_start, time, user_id, counter) => {
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"disponibility": disponibility,
+						"is_available": is_available,
+						"cacha_id": cacha_id,
+						"date_start": date_start,
+						"time": time,
+						"user_id": user_id,
+						"counter": counter
+					})
+				};
+
+				try {
+					const resp = await fetch('https://ss-api-render-2.onrender.com/rentas', options);
+
+					if (resp.status !== 200) {
+						alert("error en fetch user");
+						return false;
+					}
+
+					const data = await resp.json();
+					return true;
+				} catch (error) {
+					console.error("error Agregando Canchas");
+				}
+			},
+
+
+
 
 
 			changeColor: (index, color) => {
