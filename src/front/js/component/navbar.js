@@ -18,7 +18,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-dark fixed-top" style={{ backgroundColor: "#1c2331" }} >
+    <nav className="navbar navbar-dark sticky-top" style={{ backgroundColor: "#1c2331" }} >
       <div className="container-fluid d-flex" style={{ backgroundColor: "#1c2331" }}>
         <Link className="navbar-brand text-uppercase fw-bold" to="/">Sport Spot</Link>
         <div>
