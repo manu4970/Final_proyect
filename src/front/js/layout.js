@@ -17,6 +17,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import RentInformationCard from "./component/BigCardInformation";
 import { Footer } from "./component/footer";
+import { HomeLogin } from "./pages/homelogin";
 
 
 //create your first component
@@ -41,6 +42,7 @@ const Layout = () => {
                         <Route element={<RenderCanchas />} path="/canchas" />
                         <Route element={<ForTesting />} path="/test" />
                         <Route element={<RentInformationCard />} path="/rent" />
+                        <Route element={<HomeLogin />} path="/homelogin" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />
                         <Route element={<Single />} path="/single/:theid" />
