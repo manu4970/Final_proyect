@@ -149,6 +149,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			getCancha: async (cancha_id) => {
+				const options = {
+					method: "GET",
+				};
+				try {
+					const resp = await fetch("https://ss-api-render-2.onrender.com/canchas/" + cancha_id, options);
+					if (resp.status !== 200) {
+						alert("Error fetching cancha");
+						return null;
+					}
+
+					const data = await resp.json();
+					console.log(data);
+					return data;
+				} catch (error) {
+					console.error("Error in getCancha:", error);
+					return null;
+				}
+			},
+
 
 			saveImgProfile: async (img, user_id) => {
 				const options = {
@@ -204,40 +224,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("error en login");
 				}
 			},
-			postCanchas: async (disponibility, is_available, cacha_id, date_start, time, user_id, counter) => {
+			rentCanchas: async (cacha_id, user_id, date, time, cantidad) => {
 				const options = {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"disponibility": disponibility,
-						"is_available": is_available,
 						"cacha_id": cacha_id,
-						"date_start": date_start,
-						"time": time,
 						"user_id": user_id,
-						"counter": counter
+						"date": date,
+						"time": time,
+						"cantidad": cantidad
 					})
 				};
-
 				try {
 					const resp = await fetch('https://ss-api-render-2.onrender.com/rentas', options);
-
 					if (resp.status !== 200) {
-						alert("error en fetch user");
+						alert("error en fetch rentas");
 						return false;
 					}
-
 					const data = await resp.json();
 					return true;
 				} catch (error) {
 					console.error("error Agregando Canchas");
 				}
 			},
-
-
-
 
 
 			changeColor: (index, color) => {

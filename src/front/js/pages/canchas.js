@@ -10,7 +10,7 @@ const RenderCanchas = () => {
         const fetchCanchas = async () => {
             try {
                 const canchasData = await actions.fetchCanchas();
-                console.log(canchasData, "canchasData");
+                console.log(canchasData, "canchasData"); // Added console.log statement
                 setCanchas(canchasData);
             } catch (error) {
                 console.log("Error fetching canchas:", error);
@@ -21,6 +21,7 @@ const RenderCanchas = () => {
     }, []);
 
     return canchas.slice(0, 6).map((cancha, canchaIndex) => (
+        console.log(cancha, "cancha"), // Added console.log statement
         <div className="row" key={canchaIndex}>
             <div className="col">
                 <CanchaCard cancha={cancha} />

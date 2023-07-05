@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 const CanchaCard = ({ cancha }) => {
   const canchaTypeIcon = {
     Tenis: <i className="fa-solid fa-racquet"></i>,
-    Football: <i className="fa-solid fa-futbol"></i>,
+    Futbol: <i className="fa-solid fa-futbol"></i>,
     Paddle: <i className="fa-solid fa-table-tennis-paddle-ball"></i>,
-    Basketball: <i className="fa-solid fa-basketball"></i>,
-    Babyfutbol: <i className="fa-duotone fa-futbol"></i>
+    Basketbol: <i className="fa-solid fa-basketball"></i>,
+    BabyFutbol: <i className="fa-duotone fa-futbol"></i>
   };
 
   const getSportTypeIcon = () => {
@@ -45,12 +45,13 @@ const CanchaCard = ({ cancha }) => {
                 {getSportTypeIcon() ? getSportTypeIcon() : <i className="fas fa-tag mr-2"></i>} {cancha.sportType}
               </li>
               <li className="tag__item">
-                <i className="fa -solid fa-person mr-2"></i> {cancha.user.name} {cancha.user.lastname}
+                <i className="fa -solid fa-person mr-2"> user </i>
               </li>
               <li className="tag__item play blue btn">
-                <a href="#">
+                <Link to={`/rent/${cancha?.id}`} onClick={console.log(cancha.id)}>
                   <i className="fas fa-basketball-ball mr-2"></i> Arrendar
-                </a>
+                </Link>
+
               </li>
             </ul>
           </div>
