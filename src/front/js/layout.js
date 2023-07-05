@@ -44,7 +44,7 @@ const Layout = () => {
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<RenderCanchas />} path="/canchas" />
                         <Route element={<ForTesting />} path="/test" />
-                        {/* <Route element={<RentInformationCard />} path="/rent/:id" /> */}
+                        <Route element={<RentInformationCard />} path="/rent/:id" />
                         <Route element={<HomeLogin />} path="/homelogin" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />
