@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { BackendURL } from "./component/backendURL";
 import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
+import { Context } from "./store/appContext";
 
-
-import { default as InformationCard, default as RentInformationCard } from "./component/BigCardInformation";
+// import { InformationCard, RentInformationCard } from "./component/RentCardInformation";
 import { Footer } from "./component/footer";
-import InformationCard from "./component/RentCardInformation";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
 import { CanchaDetails } from "./pages/canchaDetail";
@@ -23,12 +22,13 @@ import injectContext from "./store/appContext";
 
 
 
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
-    const logged = sessionStorage.getItem("isLoggedIn");
+    const { store, actions } = useContext(Context)
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
@@ -38,13 +38,13 @@ const Layout = () => {
                 <Navbar />
                 <ScrollToTop>
                     <Routes>
-                        <Route element={logged ? < Home /> : <HomeLogin />} path="/" />
+                        <Route element={store.isLoggedIn ? <HomeLogin /> : <Home />} path="/" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<RenderCanchas />} path="/canchas" />
                         <Route element={<ForTesting />} path="/test" />
-                        <Route element={<RentInformationCard />} path="/rent/:id" />
+                        {/* <Route element={<RentInformationCard />} path="/rent/:id" /> */}
                         <Route element={<HomeLogin />} path="/homelogin" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />
