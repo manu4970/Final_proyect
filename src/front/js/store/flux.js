@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: null,
 			message: null,
+			isLoggedIn: false,
 			users: [],
 			canchas: [],
 			imgProfile: [],
@@ -85,7 +86,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					sessionStorage.setItem("auth_token", data.auth_token)
 					sessionStorage.setItem("id", data.id)
-					sessionStorage.setItem("isLoggedIn", true)
 					return true
 
 				}
@@ -119,12 +119,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			logout: () => {
-				sessionStorage.removeItem("auth_token")
-				sessionStorage.removeItem("id")
-				sessionStorage.setItem("isLoggedIn", "false")
-
-			},
 
 			getUser: async (user_id) => {
 				const options = {
