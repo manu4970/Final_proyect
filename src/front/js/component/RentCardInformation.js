@@ -4,6 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/InformationCard.css";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
+import SuccessComponent from "./Success";
+import { useNavigate } from "react-router-dom";
 
 const RentInformationCard = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -16,6 +18,7 @@ const RentInformationCard = () => {
     const [canchaData, setCanchaData] = useState({});
     const [user, setUser] = useState({});
     const cancha_id = pathNameDividido[pathNameDividido.length - 1];
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -61,9 +64,11 @@ const RentInformationCard = () => {
 
         if (isSuccess) {
             console.log("Rent successful!");
+            navigate("/success");
         } else {
             console.log("Rent failed!");
         }
+
     };
 
 
