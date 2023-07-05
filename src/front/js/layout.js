@@ -5,7 +5,7 @@ import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
 import { Context } from "./store/appContext";
 
-// import { InformationCard, RentInformationCard } from "./component/RentCardInformation";
+import RentInformationCard from "./component/RentCardInformation";
 import { Footer } from "./component/footer";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";

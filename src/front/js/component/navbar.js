@@ -38,26 +38,35 @@ export function Navbar() {
         </div>
         <div>
           {!logged ?
-            (<div className="row">
-              <div className="col">
-                <div className="d-flex justify-content-center">
-                  <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px" }}>
-                    <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            (
+              <div className="row">
+                <div className="col d-flex justify-content-center align-items-center">
+                  <p className="btn p-0 m-0">
+                    <Link to="/canchas" className="text-white text-smaller">Busca tu Cancha</Link>
+                  </p>
+                </div>
+                <div className="col">
+                  <div className="d-flex justify-content-center">
+
+                    <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px" }}>
+                      <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
                   </div>
                 </div>
+                <div className="col">
+                  <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar">
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                </div>
               </div>
-
-              <div className="col">
-                <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar" >
-                  <span className="navbar-toggler-icon"></span> </button>
-              </div>  </div>)
+            )
             : (
               <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                 <span className="navbar-toggler-icon"></span>
               </button>
             )
-
-          }</div>
+          }
+        </div>
 
 
         <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">

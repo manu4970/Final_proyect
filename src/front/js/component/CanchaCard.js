@@ -48,7 +48,7 @@ const CanchaCard = ({ cancha }) => {
                 <i className="fa -solid fa-person mr-2"> user </i>
               </li>
               <li className="tag__item play blue btn">
-                <Link to={`/rent/${cancha?.id}`} onClick={console.log(cancha.id)}>
+                <Link to={`/rent/${cancha?.id}`}>
                   <i className="fas fa-basketball-ball mr-2"></i> Arrendar
                 </Link>
 
