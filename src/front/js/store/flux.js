@@ -51,8 +51,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const resp = await fetch('https://ss-api-render-2.onrender.com/signup', options)
 
-					if (resp.status != 200) {
-						alert("error en fetch user")
+					if (resp.status != 201) {
+						alert("error en fetch en signup")
 						return false
 					}
 
@@ -86,6 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					sessionStorage.setItem("auth_token", data.auth_token)
 					sessionStorage.setItem("id", data.id)
+					sessionStorage.setItem("isLoggedIn", "true")
 					return true
 
 				}
@@ -117,8 +118,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return [];
 				}
 			},
-
-
 
 			getUser: async (user_id) => {
 				const options = {
@@ -163,6 +162,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			pushCancha: async (name, location, user_id, sportType, cantidad, detalle, is_available) => {
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"name": name,
+						"location": location,
+						"user_id": user_id,
+						"sportType": sportType,
+						"cantidad": cantidad,
+						"detalle": detalle,
+						"is_available": is_available
+					})
+				}
+				try {
+
+					const resp = await fetch('https://ss-api-render-2.onrender.com/canchas', options)
+
+					if (resp.status != 200) {
+						alert("error en fetch Post cancha")
+						return false
+					}
+
+					const data = await resp.json()
+					return true
+
+				}
+				catch (error) {
+					console.error("error en signUp")
+				}
+			},
+
+
 
 			saveImgProfile: async (img, user_id) => {
 				const options = {
@@ -205,7 +239,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(`https://ss-api-render-2.onrender.com/user/${user_id}`, options);
 
 					if (resp.status !== 200) {
-						alert("error en fetch token");
+						alert("error en fetch img");
 						return false;
 					}
 
