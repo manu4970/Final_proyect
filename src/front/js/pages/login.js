@@ -11,8 +11,9 @@ export const Login = () => {
 
     const handleClick = () => {
         event.preventDefault()
+        store.isLoggedIn = true
         actions.login(email, pass).then(() => {
-            navigate("/profile")
+            navigate("/homelogin")
         })
     }
 
