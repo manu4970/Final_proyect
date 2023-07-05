@@ -134,7 +134,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					console.log(data)
 					setStore({ user: data })
-					return true
+					return data
 
 				}
 				catch (error) {
@@ -253,14 +253,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("error en login");
 				}
 			},
-			rentCanchas: async (cacha_id, user_id, date, time, cantidad) => {
+			rentCanchas: async (cancha_id, user_id, date, time, cantidad) => {
 				const options = {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"cacha_id": cacha_id,
+						"cancha_id": cancha_id,
 						"user_id": user_id,
 						"date": date,
 						"time": time,
