@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/buttonsHome.css";
+import "../../styles/home.css";
+import { Context } from "../store/appContext";
 
 
 export const Home = () => {
@@ -16,6 +16,7 @@ export const Home = () => {
 		navigate("/login");
 	};
 
+	sessionStorage.setItem("isLoggedIn", "false")
 	const images = [
 		"https://uploads-ssl.webflow.com/632871e15b53a0140af28aeb/633b061d864ce251bb36073e_pexels-markus-spiske-1752757.jpg",
 		"https://journey.app/blog/wp-content/uploads/2021/11/reglas-deportivas_Tenis_.jpg",
@@ -57,7 +58,7 @@ export const Home = () => {
 				</p>
 				<div className="d-flex justify-content-between ">
 					<div className="btnhome">
-						<Link className="btnhome btn-lg btn-dark" to="/canchas">
+						<Link className="btnhome btn-lg btn-dark" to="/login">
 							<span>Reserva tu Cancha</span>
 						</Link>
 					</div>

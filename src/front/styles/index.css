@@ -2,6 +2,7 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 body {
+    height: 100%;
     margin-top: 64px !important;
     margin-bottom: 155px !important;
 }

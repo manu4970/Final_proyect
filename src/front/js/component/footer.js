@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/footer.css";
 
 export const Footer = () => (
-	<footer className="text-center text-lg-start text-white fixed-bottom" style={{ backgroundColor: "#1c2331" }}>
+	<footer className="footer text-center text-lg-start text-white" style={{ backgroundColor: "#1c2331" }}>
 		<section className="d-flex justify-content-between p-1" style={{ backgroundColor: "#6351ce" }}>
 
 		</section>

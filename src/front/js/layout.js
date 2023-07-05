@@ -4,6 +4,9 @@ import { BackendURL } from "./component/backendURL";
 import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
 
+
+import { default as InformationCard, default as RentInformationCard } from "./component/BigCardInformation";
+import { Footer } from "./component/footer";
 import InformationCard from "./component/RentCardInformation";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
@@ -12,13 +15,12 @@ import RenderCanchas from "./pages/canchas";
 import { Demo } from "./pages/demo";
 import ForTesting from "./pages/forTesting";
 import { Home } from "./pages/home";
+import { HomeLogin } from "./pages/homelogin";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import RentInformationCard from "./component/RentCardInformation";
-import { Footer } from "./component/footer";
-import { HomeLogin } from "./pages/homelogin";
+
 
 
 //create your first component
@@ -36,7 +38,7 @@ const Layout = () => {
                 <Navbar />
                 <ScrollToTop>
                     <Routes>
-                        <Route element={logged ? <Profile /> : <Home />} path="/" />
+                        <Route element={logged ? < Home /> : <HomeLogin />} path="/" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
