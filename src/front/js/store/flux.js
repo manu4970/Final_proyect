@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const resp = await fetch('https://ss-api-render-2.onrender.com/signup', options)
 
-					if (resp.status != 200) {
+					if (resp.status != 201) {
 						alert("error en fetch user")
 						return false
 					}
@@ -86,6 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					sessionStorage.setItem("auth_token", data.auth_token)
 					sessionStorage.setItem("id", data.id)
+					sessionStorage.setItem("isLoggedIn", "true")
 					return true
 
 				}
@@ -117,8 +118,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return [];
 				}
 			},
-
-
 
 			getUser: async (user_id) => {
 				const options = {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/CanchaCard.css";
 import "../../styles/InformationCard.css";
@@ -6,26 +6,27 @@ import "../../styles/navbar.css";
 import { Context } from "../store/appContext";
 
 export function Navbar() {
-  const { actions, store } = useContext(Context);
+  const { store } = useContext(Context);
   const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
-
-  console.log(store.isLoggedIn)
 
   const handleClickLogOut = () => {
     sessionStorage.removeItem("auth_token")
     sessionStorage.removeItem("id")
-    store.isLoggedIn = false
-    console.log(logged)
+    sessionStorage.removeItem("isLoggedIn")
     navigate("/");
   };
 
+  if (sessionStorage.getItem("isLoggedIn") === "true") {
+    store.isLoggedIn = true
+  } else {
+    store.isLoggedIn = false
+  }
+
   const handleClickLogIn = () => {
     navigate("/login")
-    // store.isLoggedIn = true
-    console.log(store.isLoggedIn)
   };
-  console.log(store.isLoggedIn)
+
   return (
     <nav className="navbar navbar-dark fixed-top" style={{ backgroundColor: "#1c2331" }} >
       <div className="container-fluid d-flex" style={{ backgroundColor: "#1c2331" }}>
@@ -37,12 +38,14 @@ export function Navbar() {
             (<button className="btn ms-auto" type="button" onClick={handleClickLogIn}>Login</button>)}
         </div>
         <div>
-          {!logged ?
+          {store.isLoggedIn ?
             (<div className="row">
               <div className="col">
                 <div className="d-flex justify-content-center">
                   <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px" }}>
-                    <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <Link to="/profile">
+                      <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -106,9 +109,6 @@ export function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/rent">Arrienda tu cancha</Link>
               </li>
-              <div className="rounded-circle overflow-hidden" style={{ width: "140px", height: "140px" }}>
-                <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-              </div>
             </ul>
           </div>
         </div>
