@@ -7,13 +7,12 @@ import { Context } from "../store/appContext";
 
 export function Navbar() {
   const { store } = useContext(Context);
-  const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
 
   const handleClickLogOut = () => {
     sessionStorage.removeItem("auth_token")
     sessionStorage.removeItem("id")
-    sessionStorage.removeItem("isLoggedIn")
+    sessionStorage.setItem("isLoggedIn", "false")
     navigate("/");
   };
 
