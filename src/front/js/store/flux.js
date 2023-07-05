@@ -101,7 +101,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						"Access-Control-Allow-Origin": "http://127.0.0.1:3000",
 					},
 				};
 
@@ -109,13 +108,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch("https://ss-api-render-2.onrender.com/canchas", options);
 					if (resp.status !== 200) {
 						alert("Error fetching canchas");
-						return [];
+						return true;
 					}
 					const data = await resp.json();
+					setStore({ canchas: data })
+					console.log(store.canchas)
 					return data;
 				} catch (error) {
 					console.error("Error in getCanchas:", error);
-					return [];
+					return true;
 				}
 			},
 

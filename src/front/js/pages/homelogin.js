@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-
+import React, { useContext, useEffect, useState } from "react";
+import CanchaCard from "../component/CanchaCard";
+import { Context } from "../store/appContext";
 
 
 export const HomeLogin = () => {
@@ -192,51 +193,65 @@ export const HomeLogin = () => {
 
 
     }
+
+    const { actions, store } = useContext(Context)
+
+    useEffect(() => {
+        actions.fetchCanchas().then(() => {
+        })
+    }, []);
+
+    console.log(store.canchas)
+
     return (
-        <div className="container">
-            <div className="searchForm">
-                <button type="button" className="btn btn- me-3">Search</button>
-                <select className="form-select-bg-size: 10px, 15px me-3" aria-label=".form-select-sm example" onChange={e => buscarComunas(e)}>
-                    <option selected>Region</option>
-                    <option value="1">Arica y Parinacota</option>
-                    <option value="2">Tarapaca</option>
-                    <option value="3">Antofagasta</option>
-                    <option value="4">Atacama</option>
-                    <option value="5">Coquimbo</option>
-                    <option value="6">Valparaíso</option>
-                    <option value="7">Metropolitana</option>
-                    <option value="8">O'Higgins</option>
-                    <option value="9">Maule</option>
-                    <option value="10">Ñuble</option>
-                    <option value="11">Bío Bío</option>
-                    <option value="12">La Araucanía</option>
-                    <option value="13">Los Ríos</option>
-                    <option value="14">Los Lagos</option>
-                    <option value="15">Aysén</option>
-                    <option value="16">Magallanes</option>
-                </select>
-                <select className="form-select-bg-size: 10px, 20px me-3" aria-label=".form-select-sm example" form-select-bg-size>
-                    <option selected>Comuna</option>
-                    {
-                        comunasRegion.map((comuna) =>
-                            <option value={comuna}>{comuna}</option>
-                        )
-                    }
+        <>
+            <div className="container-fluid d-flex align-items-center justify-content-center">
+                <div className="d-flex p-3 gap-2">
+                    <select className="form-select " aria-label=".form-select-sm example" onChange={e => buscarComunas(e)}>
+                        <option selected>Region</option>
+                        <option value="1">Arica y Parinacota</option>
+                        <option value="2">Tarapaca</option>
+                        <option value="3">Antofagasta</option>
+                        <option value="4">Atacama</option>
+                        <option value="5">Coquimbo</option>
+                        <option value="6">Valparaíso</option>
+                        <option value="7">Metropolitana</option>
+                        <option value="8">O'Higgins</option>
+                        <option value="9">Maule</option>
+                        <option value="10">Ñuble</option>
+                        <option value="11">Bío Bío</option>
+                        <option value="12">La Araucanía</option>
+                        <option value="13">Los Ríos</option>
+                        <option value="14">Los Lagos</option>
+                        <option value="15">Aysén</option>
+                        <option value="16">Magallanes</option>
+                    </select>
+                    <select className="form-select" aria-label=".form-select-sm example" form-select-bg-size>
+                        <option selected>Comuna</option>
+                        {
+                            comunasRegion.map((comuna) =>
+                                <option value={comuna}>{comuna}</option>
+                            )
+                        }
 
-                </select>
-                <select className="form-select-bg-size: 10px, 20px" aria-label=".form-select-sm example">
-                    <option selected>Deporte</option>
-                    <option value="1">Tenis</option>
-                    <option value="2">Futbol</option>
-                    <option value="3">Paddle</option>
-                    <option value="4">Básquetbol</option>
-                    <option value="5">Baby Futbol</option>
-                </select>
+                    </select>
+                    <select className="form-select" aria-label=".form-select-sm example">
+                        <option selected>Deporte</option>
+                        <option value="1">Tenis</option>
+                        <option value="2">Futbol</option>
+                        <option value="3">Paddle</option>
+                        <option value="4">Básquetbol</option>
+                        <option value="5">Baby Futbol</option>
+                    </select>
+                </div>
+                <div className="searchForm">
+                    <button type="button" className="btn btn- me-3">Search</button>
+                </div>
+
             </div>
-
-        </div>
-
-
+            {store.canchas.map(cancha =>
+                <CanchaCard className="" cancha={cancha} />
+            )}
+        </>
     )
-
 };
