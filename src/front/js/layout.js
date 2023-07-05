@@ -5,9 +5,8 @@ import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
 
 
-import { default as InformationCard, default as RentInformationCard } from "./component/BigCardInformation";
+import RentInformationCard from "./component/RentCardInformation";
 import { Footer } from "./component/footer";
-import InformationCard from "./component/RentCardInformation";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
 import { CanchaDetails } from "./pages/canchaDetail";
