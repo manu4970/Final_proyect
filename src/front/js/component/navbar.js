@@ -30,39 +30,39 @@ export function Navbar() {
     <nav className="navbar navbar-dark fixed-top" style={{ backgroundColor: "#1c2331" }} >
       <div className="container-fluid d-flex" style={{ backgroundColor: "#1c2331" }}>
         <Link className="navbar-brand text-uppercase fw-bold" to="/">Sport Spot</Link>
-        <div>
+        <div className="Foo d-flex ms-auto" style={{ paddingRight: "10px" }}>
+          <div>
+            {store.isLoggedIn ?
+              (<button className="btn ms-auto" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogOut}>Logout</button>)
+              :
+              (<button className="btn ms-auto" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogIn}>Login</button>)}
+          </div>
           {store.isLoggedIn ?
-            (<button className="btn ms-auto" type="button" onClick={handleClickLogOut}>Logout</button>)
-            :
-            (<button className="btn ms-auto" type="button" onClick={handleClickLogIn}>Login</button>)}
-        </div>
-        <div>
-          {store.isLoggedIn ?
-            (<div className="row">
-              <div className="col">
-                <div className="d-flex justify-content-center">
-                  <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px" }}>
-                    <Link to="/profile">
-                      <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    </Link>
-                  </div>
-                </div>
+            (
+              <div className="row">
                 <div className="col">
-                  <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar">
-                    <span className="navbar-toggler-icon"></span>
-                  </button>
+                  <div className="d-flex justify-content-center">
+                    <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px",  marginLeft: "10px" }}>
+                      <Link to="/profile">
+                        <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             )
-            : (
-              <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-            )
-          }
+            :
+            (
+              <></>
+            )}
         </div>
-
-
+        <div>
+          <div className="col">
+            <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
         <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
           <div className="offcanvas-header bg-dark">
             <h5 className="offcanvas-title bg-dark text-white" id="offcanvasDarkNavbarLabel">Arrienda tu Cancha</h5>
