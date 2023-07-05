@@ -39,13 +39,11 @@ export function Navbar() {
         <div>
           {store.isLoggedIn ?
             (<div className="row">
-              <div className="col">
-                <div className="d-flex justify-content-center">
-                  <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px" }}>
-                    <Link to="/profile">
-                      <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    </Link>
-                  </div>
+              <div className="d-flex justify-content-center">
+                <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px" }}>
+                  <Link to="/profile">
+                    <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </Link>
                 </div>
                 <div className="col">
                   <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar">
