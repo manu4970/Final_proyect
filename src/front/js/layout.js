@@ -7,6 +7,7 @@ import ScrollToTop from "./component/scrollToTop";
 import InformationCard from "./component/BigCardInformation";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
+import { CanchaDetails } from "./pages/canchaDetail";
 import RenderCanchas from "./pages/canchas";
 import { Demo } from "./pages/demo";
 import ForTesting from "./pages/forTesting";
@@ -46,6 +47,7 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />
                         <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<CanchaDetails />} path="detalles" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                 </ScrollToTop>
