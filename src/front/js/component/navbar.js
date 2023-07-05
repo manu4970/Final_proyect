@@ -47,19 +47,20 @@ export function Navbar() {
                     </Link>
                   </div>
                 </div>
+                <div className="col">
+                  <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar">
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                </div>
               </div>
-
-              <div className="col">
-                <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbaLogged" aria-controls="offcanvasDarkNavbar" >
-                  <span className="navbar-toggler-icon"></span> </button>
-              </div>  </div>)
+            )
             : (
               <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                 <span className="navbar-toggler-icon"></span>
               </button>
             )
-
-          }</div>
+          }
+        </div>
 
 
         <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">

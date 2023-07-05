@@ -23,9 +23,7 @@ export const Footer = () => (
 							<Link to="#" className="text-white me-4">
 								<i className="fab fa-instagram"></i>
 							</Link>
-							<p className="btn mb-1">
-								<Link to="/rent" className="text-white">Rent a Spot</Link>
-							</p>
+
 
 						</div>
 

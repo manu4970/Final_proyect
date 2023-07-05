@@ -14,12 +14,14 @@ const RentInformationCard = () => {
     const pathname = window.location.pathname;
     const pathNameDividido = pathname.split("/");
     const [canchaData, setCanchaData] = useState({});
+    const [user, setUser] = useState({});
+    const cancha_id = pathNameDividido[pathNameDividido.length - 1];
 
 
     useEffect(() => {
         const fetchCanchaData = async () => {
             try {
-                const data = await actions.getCancha(pathNameDividido[pathNameDividido.length - 1]);
+                const data = await actions.getCancha(cancha_id);
                 setCanchaData(data);
             } catch (error) {
                 console.error("Error fetching cancha data:", error);
@@ -28,7 +30,7 @@ const RentInformationCard = () => {
         const fetchUserData = async () => {
             try {
                 const data = await actions.getUser(sessionId);
-                console.log(data);
+                setUser(data);
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
@@ -40,7 +42,22 @@ const RentInformationCard = () => {
         e.preventDefault();
         console.log("Form submitted!");
 
-        const isSuccess = await actions.rentCanchas("cancha_id", sessionId, selectedDate, selectedTime, selectedCantidad);
+        // Format the selectedDate and selectedTime values
+        const formattedDate = selectedDate ? selectedDate.toISOString().split("T")[0] : "";
+        const formattedTime = selectedTime ? selectedTime.replace(":", "") : "";
+
+        // Convert the selectedCantidad value to a boolean
+        const selectedCantidadBool = selectedCantidad === "True";
+
+
+
+        const isSuccess = await actions.rentCanchas(
+            cancha_id,
+            sessionId,
+            formattedDate.toString(),
+            formattedTime.toString(),
+            selectedCantidadBool
+        );
 
         if (isSuccess) {
             console.log("Rent successful!");
@@ -48,7 +65,7 @@ const RentInformationCard = () => {
             console.log("Rent failed!");
         }
     };
-    console.log(canchaData, "canchaData");
+
 
     return (
         <>
@@ -68,8 +85,8 @@ const RentInformationCard = () => {
 
                         <div className="row">
                             <div className="col mt-4 pt-4">
-                                <h5 className="card-title ">{canchaData.name}</h5>
-                                <p className="card-text mt-4 pt-4"> {canchaData.detalle}</p>
+                                <h1 className="card-title ">{canchaData.name}</h1>
+                                <h2 className="card-text mt-4 pt-4"> {canchaData.detalle}</h2>
 
                             </div>
                             <div className="col ">
@@ -78,11 +95,11 @@ const RentInformationCard = () => {
                                         <form onSubmit={handleSubmit}>
                                             <div className="form-group ">
                                                 <label htmlFor="name"></label>
-                                                <input type="text" className="form-control bg-info " id="name" placeholder="Name" required />
+                                                <input type="text" className="form-control bg-info " id="name" value={user.name || ""} required />
                                             </div>
                                             <div className="form-group ">
                                                 <label htmlFor="email"></label>
-                                                <input type="email" className="form-control bg-info" id="email" placeholder="Email" required />
+                                                <input type="email" className="form-control bg-info" id="email" value={user.email || ""} required />
                                             </div>
                                             <div className="form-group  mb-4 ">
                                                 <label htmlFor="phone"></label>
@@ -109,14 +126,14 @@ const RentInformationCard = () => {
                                                     required
                                                 >
                                                     <option value="">Select a time</option>
-                                                    <option value="09:00">9:00 AM</option>
-                                                    <option value="11:00">11:00 AM</option>
-                                                    <option value="13:00">1:00 PM</option>
-                                                    <option value="15:00">3:00 PM</option>
-                                                    <option value="17:00">5:00 PM</option>
-                                                    <option value="19:00">7:00 PM</option>
-                                                    <option value="21:00">9:00 PM</option>
-                                                    <option value="23:00">11:00 PM</option>
+                                                    <option value="09:00">9:00AM</option>
+                                                    <option value="11:00">11:00AM</option>
+                                                    <option value="13:00">1:00PM</option>
+                                                    <option value="15:00">3:00PM</option>
+                                                    <option value="17:00">5:00PM</option>
+                                                    <option value="19:00">7:00PM</option>
+                                                    <option value="21:00">9:00PM</option>
+                                                    <option value="23:00">11:00PM</option>
                                                 </select>
                                             </div>
 
@@ -129,11 +146,10 @@ const RentInformationCard = () => {
                                                     onChange={(e) => setSelectedCantidad(e.target.value)}
                                                     required
                                                 >
-                                                    <option value="">Cantidad de Canchas(1-4)</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
+                                                    <option value="">Trae Pelota?</option>
+                                                    <option value="True">Si</option>
+                                                    <option value="False">No</option>
+
                                                 </select>
                                             </div>
                                             <button type="submit" className="button-32">
