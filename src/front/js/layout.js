@@ -4,7 +4,7 @@ import { BackendURL } from "./component/backendURL";
 import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
 
-import InformationCard from "./component/BigCardInformation";
+import InformationCard from "./component/RentCardInformation";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
 import RenderCanchas from "./pages/canchas";
@@ -15,7 +15,7 @@ import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import RentInformationCard from "./component/BigCardInformation";
+import RentInformationCard from "./component/RentCardInformation";
 import { Footer } from "./component/footer";
 import { HomeLogin } from "./pages/homelogin";
 
@@ -41,7 +41,7 @@ const Layout = () => {
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<RenderCanchas />} path="/canchas" />
                         <Route element={<ForTesting />} path="/test" />
-                        <Route element={<RentInformationCard />} path="/rent" />
+                        <Route element={<RentInformationCard />} path="/rent/:id" />
                         <Route element={<HomeLogin />} path="/homelogin" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />

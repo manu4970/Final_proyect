@@ -51,8 +51,8 @@ export const AddCanchas = () => {
                                         <option value="1">Tenis</option>
                                         <option value="2">Paddle</option>
                                         <option value="3">Futbol</option>
-                                        <option value="4">Basquetbol</option>
-                                        <option value="5">Baby Futbol</option>
+                                        <option value="4">Basketbol</option>
+                                        <option value="5">BabyFutbol</option>
                                     </select>
                                 </div>
                             </div>

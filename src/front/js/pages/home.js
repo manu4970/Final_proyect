@@ -19,7 +19,7 @@ export const Home = () => {
 	const images = [
 		"https://uploads-ssl.webflow.com/632871e15b53a0140af28aeb/633b061d864ce251bb36073e_pexels-markus-spiske-1752757.jpg",
 		"https://journey.app/blog/wp-content/uploads/2021/11/reglas-deportivas_Tenis_.jpg",
-		"https://thephysiocompany.co.uk/wp-content/uploads/football.jpg"
+		"https://mundoentrenamiento.com/wp-content/uploads/2015/04/causas-de-la-fatiga-en-el-futbol.webp"
 	];
 
 	useEffect(() => {
