@@ -17,6 +17,7 @@ const CanchaCard = ({ cancha }) => {
     return canchaTypeIcon[sportType] || null;
   };
 
+  console.log(cancha)
   return (
     <section className="dark">
       <div className="container py-4">

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { BackendURL } from "./component/backendURL";
 import { Navbar } from "./component/navbar";
 import ScrollToTop from "./component/scrollToTop";
-import { Context } from "./store/appContext";
+
 
 import RentInformationCard from "./component/RentCardInformation";
 import { Footer } from "./component/footer";
@@ -28,7 +28,8 @@ const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
-    const { store, actions } = useContext(Context)
+    const logged = sessionStorage.getItem("isLoggedIn");
+    // const { store, actions } = useContext(Context)
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
@@ -38,7 +39,7 @@ const Layout = () => {
                 <Navbar />
                 <ScrollToTop>
                     <Routes>
-                        <Route element={store.isLoggedIn ? <HomeLogin /> : <Home />} path="/" />
+                        <Route element={logged ? <HomeLogin /> : < Home />} path="/" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
