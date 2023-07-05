@@ -12,12 +12,6 @@ export const Login = () => {
     const handleClick = () => {
         event.preventDefault()
 
-        if (sessionStorage.getItem("isLoggedIn") === "true") {
-            store.isLoggedIn = true
-        } else {
-            store.isLoggedIn = false
-        }
-
         actions.login(email, pass).then(() => {
             navigate("/homelogin")
             console.log(store.isLoggedIn)
