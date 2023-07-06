@@ -63,7 +63,7 @@ export const Home = () => {
 						</Link>
 					</div>
 					<div className="btnhome">
-						<Link className="btnhome btn-lg btn-dark" to="/profile">
+						<Link className="btnhome btn-lg btn-dark" to="/addcanchas">
 							<span>Administra tus Canchas</span>
 						</Link>
 					</div>

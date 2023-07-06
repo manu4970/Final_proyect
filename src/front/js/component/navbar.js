@@ -42,7 +42,7 @@ export function Navbar() {
               <div className="row">
                 <div className="col">
                   <div className="d-flex justify-content-center">
-                    <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px",  marginLeft: "10px" }}>
+                    <div className="rounded-circle overflow-hidden" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                       <Link to="/profile">
                         <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                       </Link>
@@ -107,7 +107,7 @@ export function Navbar() {
                 <Link className="nav-link active" aria-current="page" to="/profile" >Profile</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/rent">Arrienda tu cancha</Link>
+                <Link className="nav-link" to="/addcanchas">Arrienda tu cancha</Link>
               </li>
             </ul>
           </div>
