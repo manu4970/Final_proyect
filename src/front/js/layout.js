@@ -15,11 +15,10 @@ import { Demo } from "./pages/demo";
 import ForTesting from "./pages/forTesting";
 import { Home } from "./pages/home";
 import { HomeLogin } from "./pages/homelogin";
-import { Login } from "./pages/login";
+import { Login2 } from "./pages/login2";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 
 
 
@@ -40,7 +39,7 @@ const Layout = () => {
                 <ScrollToTop>
                     <Routes>
                         <Route element={logged ? <HomeLogin /> : < Home />} path="/" />
-                        <Route element={<Login />} path="/login" />
+                        <Route element={<Login2 />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<RenderCanchas />} path="/canchas" />

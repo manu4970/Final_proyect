@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: null,
 			message: null,
-			isLoggedIn: false,
+			loginLoading: false,
+			loginResp: null,
 			users: [],
 			canchas: [],
 			imgProfile: [],
@@ -79,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const resp = await fetch('https://ss-api-render-2.onrender.com/login', options)
 					if (resp.status != 200) {
-						alert("error en fetch token")
+						setStore({ loginResp: true })
 						return false
 					}
 
