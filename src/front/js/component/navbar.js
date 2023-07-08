@@ -108,7 +108,7 @@ export function Navbar() {
                 <Link className="nav-link active" aria-current="page" to="/profile" >Profile</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/rent">Arrienda tu cancha</Link>
+                <Link className="nav-link" to="/addcanchas">Arrienda tu cancha</Link>
               </li>
             </ul>
           </div>

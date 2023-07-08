@@ -38,8 +38,8 @@ const Profile = () => {
                                 <div>
                                     <UploadWidget />
                                 </div>
-                                <h5 className="my-3">{store.user.lastName} {store.user.name}</h5>
-                                <p className="text-muted mb-1">Full Stack Prisoner {store.user.name}</p>
+                                <h5 className="my-3">{store.user.lastname} {store.user.name}</h5>
+                                <p className="text-muted mb-1">Full Stack Prisoner</p>
                                 <p className="text-muted mb-4">New york, USA</p>
                                 <div className="d-flex justify-content-center mb-2">
                                     <button type="button" className="btn btn-primary">Follow</button>
@@ -47,30 +47,7 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card mb-4 mb-lg-0">
-                            <div className="card-body p-0">
-                                <ul className="list-group list-group-flush rounded-3">
 
-                                    <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i className="fab fa-whatsapp fa-lg" style={{ color: '#333333' }}></i>
-                                        <p className="mb-0">Whatsapp</p>
-                                    </a>
-
-                                    <a href="https://twitter.com/home" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i className="fab fa-twitter fa-lg" style={{ color: '#55acee' }}></i>
-                                        <p className="mb-0">Twitter</p>
-                                    </a>
-                                    <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i className="fab fa-instagram fa-lg" style={{ color: '#ac2bac' }}></i>
-                                        <p className="mb-0">Instagram</p>
-                                    </a>
-                                    <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i className="fab fa-facebook-f fa-lg" style={{ color: '#3b5998' }}></i>
-                                        <p className="mb-0">Facebook</p>
-                                    </a>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                     <div className="col-lg-8">
                         <div className="card mb-4">
@@ -80,7 +57,7 @@ const Profile = () => {
                                         <p className="mb-0">Full Name</p>
                                     </div>
                                     <div className="col-sm-9">
-                                        <p className="text-muted mb-0">{store.user.lastName} {store.user.name}</p>
+                                        <p className="text-muted mb-0">{store.user.lastname} {store.user.name}</p>
                                     </div>
                                 </div>
                                 <hr />
@@ -103,17 +80,34 @@ const Profile = () => {
                                 </div>
                                 <hr />
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="button-container">
-                                <RentButton />
-                            </div>
-                        </div>
+                            <div className="card mb-4 mb-lg-0">
+                                <div className="card-body p-0 ">
+                                    <ul className="list-group list-group-flush rounded-3">
 
-                        <div className="row">
-                            <div className="button-container">
-                                <FindCanchaButton />
+                                        <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark">
+                                            <i className="fab fa-whatsapp fa-lg " style={{ color: '#00CC66' }}></i>
+                                            <p className="mb-0  text-white">Whatsapp</p>
+                                        </a>
+
+                                        <a href="https://twitter.com/home" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark">
+                                            <i className="fab fa-twitter fa-lg" style={{ color: '#55acee' }}></i>
+                                            <p className="mb-0 text-white">Twitter</p>
+                                        </a>
+                                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark">
+                                            <i className="fab fa-instagram fa-lg" style={{ color: '#ac2bac' }}></i>
+                                            <p className="mb-0  text-white ">Instagram</p>
+                                        </a>
+                                        <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" className="list-group-item d-flex justify-content-between align-items-center p-3 bg-dark">
+                                            <i className="fab fa-facebook-f fa-lg" style={{ color: '#3b5998' }}></i>
+                                            <p className="mb-0  text-white ">Facebook</p>
+                                        </a>
+                                    </ul>
+                                </div>
                             </div>
+                        </div>
+                        <div className="row">
+                        </div>
+                        <div className="row">
                         </div>
                     </div>
                 </div>

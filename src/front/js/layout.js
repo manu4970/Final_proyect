@@ -19,6 +19,7 @@ import { Login2 } from "./pages/login2";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import SuccessComponent from "./component/Success";
 
 
 
@@ -46,11 +47,14 @@ const Layout = () => {
                         <Route element={<RenderCanchas />} path="/canchas" />
                         <Route element={<ForTesting />} path="/test" />
                         {/* <Route element={<RentInformationCard />} path="/rent/:id" /> */}
+                        <Route element={<RentInformationCard />} path="/rent/:id" />
+                        <Route element={<HomeLogin />} path="/homelogin" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<CanchaDetails />} path="detalles" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route element={<SuccessComponent />} path="/success" />
+                        <Route element={<h1>Not found!</h1>} / path="*">
                     </Routes>
                 </ScrollToTop>
                 <Footer />
