@@ -38,14 +38,14 @@ const Layout = () => {
                 <Navbar />
                 <ScrollToTop>
                     <Routes>
-                        <Route element={logged ? <HomeLogin /> : < Home />} path="/" />
+                        <Route element={<Home />} path="/" />
+                        <Route element={<HomeLogin />} path="/home" />
                         <Route element={<Login2 />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile />} path="/profile" />
                         <Route element={<RenderCanchas />} path="/canchas" />
                         <Route element={<ForTesting />} path="/test" />
                         {/* <Route element={<RentInformationCard />} path="/rent/:id" /> */}
-                        <Route element={<HomeLogin />} path="/homelogin" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<AddCanchas />} path="/addcanchas" />
                         <Route element={<Single />} path="/single/:theid" />

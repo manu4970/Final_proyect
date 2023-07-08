@@ -21,7 +21,8 @@ export const Login2 = () => {
                 setIsLoading(false)
             } else {
                 setShowError(false)
-                navigate("/homelogin")
+                navigate("/")
+                setShowError(true)
             }
         })
 
@@ -38,16 +39,16 @@ export const Login2 = () => {
                                 <form className='gap-3'>
                                     <div className="input-group  mb-3">
                                         <span className="input-group-text" id="basic-addon1"><i className="fa fa-envelope"></i></span>
-                                        <input type="text" className="form-control" required pattern="" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                        <input type="email" className="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                     <div className="input-group ">
                                         <span className="input-group-text" id="basic-addon1"><i className="fa fa-lock"></i></span>
-                                        <input type="text" className="form-control" required placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" value={pass} onChange={(e) => setPass(e.target.value)} />
+                                        <input type="password" className="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" value={pass} onChange={(e) => setPass(e.target.value)} />
                                     </div>
                                     {showError && <div className="alert alert-danger mt-3 mb-1" role="alert">Email or password incorrect</div>}
                                     {isLoading &&
-                                        <div class="spinner-border mt-3" role="status">
-                                            <span class="visually-hidden">Loading...</span>
+                                        <div className="spinner-border mt-3" role="status">
+                                            <span className="visually-hidden">Loading...</span>
                                         </div>
                                     }
                                     {/* {store.loginResp ?  : null} */}

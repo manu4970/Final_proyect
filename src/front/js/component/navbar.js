@@ -10,9 +10,10 @@ export function Navbar() {
   const navigate = useNavigate();
 
   const handleClickLogOut = () => {
+    window.location.reload(false)
     sessionStorage.removeItem("auth_token")
     sessionStorage.removeItem("id")
-    sessionStorage.setItem("isLoggedIn", "false")
+    sessionStorage.removeItem("isLoggedIn")
     navigate("/");
   };
 
@@ -29,13 +30,13 @@ export function Navbar() {
   return (
     <nav className="navbar navbar-dark fixed-top" style={{ backgroundColor: "#1c2331" }} >
       <div className="container-fluid d-flex" style={{ backgroundColor: "#1c2331" }}>
-        <Link className="navbar-brand text-uppercase fw-bold" to="/">Sport Spot</Link>
+        <Link className="navbar-brand text-uppercase fw-bold" to="/" >Sport Spot</Link>
         <div className="Foo d-flex ms-auto" style={{ paddingRight: "10px" }}>
           <div>
             {store.isLoggedIn ?
-              (<button className="btn ms-auto" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogOut}>Logout</button>)
+              (<button className="btn ms-auto text-light" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogOut}>Logout</button>)
               :
-              (<button className="btn ms-auto" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogIn}>Login</button>)}
+              (<button className="btn ms-auto text-light" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogIn}>Login</button>)}
           </div>
           {store.isLoggedIn ?
             (

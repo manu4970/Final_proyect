@@ -53,8 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch('https://ss-api-render-2.onrender.com/signup', options)
 
 					if (resp.status != 201) {
-						alert("error en fetch en signup")
-						return false
+						return false;
 					}
 
 					const data = await resp.json()
@@ -62,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 				catch (error) {
-					console.error("error en signUp")
+					console.error("error en signUp", error)
 				}
 			},
 

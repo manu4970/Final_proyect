@@ -2,3 +2,15 @@
     display: block;
     margin-top: 10px;
 }
+
+.signUpError {
+    display: none;
+}
+
+input:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+input:invalid[focused="true"]~.signUpError {
+    display: block;
+}
