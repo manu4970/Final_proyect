@@ -6,6 +6,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 
 import RentInformationCard from "./component/RentCardInformation";
+import SuccessComponent from "./component/Success";
 import { Footer } from "./component/footer";
 import Profile from "./pages/Profile-Protected";
 import { AddCanchas } from "./pages/addCanchas";
@@ -19,7 +20,6 @@ import { Login2 } from "./pages/login2";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import SuccessComponent from "./component/Success";
 
 
 
@@ -54,7 +54,7 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<CanchaDetails />} path="detalles" />
                         <Route element={<SuccessComponent />} path="/success" />
-                        <Route element={<h1>Not found!</h1>} / path="*">
+                        <Route element={<h1>Not found!</h1>} path="*" />
                     </Routes>
                 </ScrollToTop>
                 <Footer />
