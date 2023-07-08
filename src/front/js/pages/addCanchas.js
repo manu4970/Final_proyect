@@ -45,9 +45,9 @@ export const AddCanchas = () => {
             <div className="p-4 text-center mb-2">
                 <h1>Agrega tu Cancha</h1>
             </div>
-            <div className="container text-center">
-                <div className="row align-items-start">
-                    <div className="col">
+            <div className="container">
+                <div className="row d-flex gap-4">
+                    <div className="col" style={{ padding: "20px", marginLeft: "150px", marginTop: "20px" }}>
                         <form >
                             <div className="mb-3">
                                 <div style={{ width: "300px", height: "50px", marginLeft: "25px" }}>
@@ -91,8 +91,8 @@ export const AddCanchas = () => {
                                 </div>
                             </div>
                             <div className="boton">
-                                <div className="" style={{ width: "300px", height: "100px", marginLeft: "20px", }}>
-                                    <button type="submit" className="btn btn-primary" onClick={handleClick}>Agregar Cancha</button>
+                                <div className="" style={{ width: "300px", height: "100px", marginLeft: "24px", }}>
+                                    <button type="submit" className="btn btn-primary " onClick={handleClick}>Agregar Cancha</button>
                                 </div>
                             </div>
                         </form >

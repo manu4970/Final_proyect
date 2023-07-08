@@ -79,23 +79,6 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p className="mb-0">Mobile</p>
-                                    </div>
-                                    <div className="col-sm-9">
-                                        <p className="text-muted mb-0">(569) 77777777</p>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p className="mb-0">Address</p>
-                                    </div>
-                                    <div className="col-sm-9">
-                                        <p className="text-muted mb-0">New york, USA</p>
-                                    </div>
-                                </div>
                             </div>
                             <div className="card mb-4 mb-lg-0">
                                 <div className="card-body p-0 ">
