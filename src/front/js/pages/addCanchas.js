@@ -42,67 +42,54 @@ export const AddCanchas = () => {
 
     return (
         <>
-            <div className="p-4 text-center mb-2">
-                <h1>Agrega tu Cancha</h1>
-            </div>
-            <div className="container">
-                <div className="row d-flex gap-4">
-                    <div className="col" style={{ padding: "20px", marginLeft: "150px", marginTop: "20px" }}>
-                        <form >
-                            <div className="mb-3">
-                                <div style={{ width: "300px", height: "50px", marginLeft: "25px" }}>
-                                    {/* <label for="nombreCancha" className="form-label">Nombre del club</label> */}
-                                    <input type="nombre" placeholder="Nombre del club" className="form-control" id="nombreCancha" aria-describedby="emailHelp" value={name} onChange={(e) => setName(e.target.value)} />
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div style={{ width: "300px", height: "50px", marginLeft: "25px", marginTop: "30px" }}>
-                                    {/* <label for="direccionCancha" className="form-label">Ubicación del club</label> */}
-                                    <input type="location" className="form-control" placeholder="Ubicación del club" id="locationCancha" value={location} onChange={(e) => setLocation(e.target.value)} />
-                                </div>
-                            </div>
-                            <div className="mb-3 form-check">
-                                <div style={{ width: "300px", height: "50px", marginLeft: "0px", marginTop: "35px" }}>
-                                    <select className="form-select" aria-label="Default select example" value={sportType} onChange={(e) => setSportType(e.target.value)}>
-                                        <option selected>Deporte</option>
-                                        <option value="Tenis">Tenis</option>
-                                        <option value="Paddle">Paddle</option>
-                                        <option value="Futbol">Futbol</option>
-                                        <option value="Basketbol">Basketbol</option>
-                                        <option value="BabyFutbol">BabyFutbol</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="mb-3 form-check">
-                                <div style={{ width: "300px", height: "50px", marginLeft: "0px" }}>
-                                    <select className="form-select" aria-label="Default select example" value={cantidad} onChange={(e) => setCantidad(e.target.value)}>
-                                        <option selected>Cantidad de Canchas</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div className="form-floating" style={{ width: "300px", height: "50px", marginLeft: "24px", color: "black" }}>
-                                    <textarea className="form-control" placeholder="Detalles" id="floatingTextarea2" value={detalle} onChange={(e) => setDetalle(e.target.value)}></textarea>
-                                    <label for="floatingTextarea2">Detalles</label>
-                                </div>
-                            </div>
-                            <div className="boton">
-                                <div className="" style={{ width: "300px", height: "100px", marginLeft: "24px", }}>
-                                    <button type="submit" className="btn btn-primary " onClick={handleClick}>Agregar Cancha</button>
-                                </div>
-                            </div>
-                        </form >
+            <section className="d-flex alaign-items-center justify-content-center gap-5">
+                <form class="row g-3" style={{ height: "550px", width: "600px", marginTop: "65px" }}>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Introduce the name of your recint" />
                     </div>
-                    <div className="col">
-                        <img src={currentImage} className="rounded float-end" alt="..." style={{ alignItems: "center", height: "500px", width: "650px" }} />
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Region</label>
+                        <input type="password" class="form-control" id="inputPassword4" />
                     </div>
-                </div>
-            </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Comuna</label>
+                        <input type="email" class="form-control" id="inputEmail4" />
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Sport</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputState" class="form-label">Number of fields</label>
+                        <input type="text" class="form-control" id="inputCity" />
 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Cost per hour</label>
+                        <input type="text" class="form-control" id="inputCity" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Disponibility</label>
+                        <input type="text" class="form-control" id="inputCity" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">More Info</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+                <img className="" style={{ height: "550px", width: "600px", marginTop: "65px" }} src={currentImage} alt="..." />
+            </section>
         </>
-    );
-};
+    )
+}
