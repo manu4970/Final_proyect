@@ -1,23 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from "../store/appContext";
 import "../../styles/CanchaCard.css";
 import { Link } from 'react-router-dom';
 
 const CanchaCard = ({ cancha }) => {
+  const { store, actions } = useContext(Context);
+  const [owner, setOwner] = useState({});
   const canchaTypeIcon = {
-    Tenis: <i className="fa-solid fa-racquet"></i>,
-    Futbol: <i className="fa-solid fa-futbol"></i>,
+    Tennis: <i className="fa-solid fa-racquet"></i>,
+    Football: <i className="fa-solid fa-futbol"></i>,
     Paddle: <i className="fa-solid fa-table-tennis-paddle-ball"></i>,
-    Basketbol: <i className="fa-solid fa-basketball"></i>,
-    BabyFutbol: <i className="fa-duotone fa-futbol"></i>
+    Basketball: <i className="fa-solid fa-basketball"></i>,
+    BabyFootball: <i className="fa-duotone fa-futbol"></i>
   };
+
 
   const getSportTypeIcon = () => {
     const sportType = cancha.sportType;
     return canchaTypeIcon[sportType] || null;
   };
 
-  console.log(cancha)
+
   return (
     <section className="dark">
       <div className="container py-4">
@@ -43,16 +46,12 @@ const CanchaCard = ({ cancha }) => {
             <div className="postcard__bar"></div>
             <ul className="postcard__tagbox">
               <li className="tag__item">
-                {getSportTypeIcon() ? getSportTypeIcon() : <i className="fas fa-tag mr-2"></i>} {cancha.sportType}
-              </li>
-              <li className="tag__item">
-                <i className="fa -solid fa-person mr-2"> user </i>
+                {getSportTypeIcon() || <i className="fas fa-tag mr-2"></i>} {cancha.sportType}
               </li>
               <li className="tag__item play blue btn">
                 <Link to={`/rent/${cancha?.id}`}>
                   <i className="fas fa-basketball-ball mr-2"></i> Arrendar
                 </Link>
-
               </li>
             </ul>
           </div>
@@ -84,3 +83,19 @@ export default CanchaCard;
 
                 // onMouseEnter={handleMouseEnter}
               // onMouseLeave={handleMouseLeave}
+
+
+
+
+ // useEffect(() => {
+  //   const fetchOwnerData = async () => {
+  //     try {
+  //       const owner = await actions.getUser(cancha.user_id);
+  //       setOwner(owner);
+  //     } catch (error) {
+  //       console.log("Error fetching owner:", error);
+  //     }
+  //   }; fetchOwnerData();
+  // }, []);
+
+  // console.log(owner, "owner");

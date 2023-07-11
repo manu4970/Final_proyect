@@ -4,13 +4,16 @@ import { Context } from '../store/appContext';
 
 const RenderCanchas = () => {
     const [canchas, setCanchas] = useState([]);
-    const { actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
+
 
     useEffect(() => {
         const fetchCanchas = async () => {
             try {
-                const canchasData = await actions.fetchCanchas();
-                console.log(canchasData, "canchasData"); // Added console.log statement
+                const [canchasData] = await Promise.all([
+                    actions.fetchCanchas(),
+                ]);
+                console.log(canchasData, "canchasData");
                 setCanchas(canchasData);
             } catch (error) {
                 console.log("Error fetching canchas:", error);
@@ -21,7 +24,7 @@ const RenderCanchas = () => {
     }, []);
 
     return canchas.slice(0, 6).map((cancha, canchaIndex) => (
-        console.log(cancha, "cancha"), // Added console.log statement
+        console.log(cancha, "cancha"),
         <div className="row" key={canchaIndex}>
             <div className="col">
                 <CanchaCard cancha={cancha} />
