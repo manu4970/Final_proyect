@@ -35,21 +35,21 @@ export const Footer = () => (
 						<hr className="mb-1 mt-0 d-inline-block mx-auto" style={{ width: "60px", backgroundColor: "#7c4dff", height: "4px" }} />
 						<div className="row">
 							<div className="col">
-								<p className="mb-1">
+								<div className="mb-1">
 									<Link to="#!" className="text-white">Basketball</Link>
 									<p className="mb-1">
 										<Link to="#!" className="text-white">Tenis</Link>
 									</p>
-								</p>
+								</div>
 
 							</div>
 							<div className="col">
-								<p className="mb-1">
+								<div className="mb-1">
 									<Link to="#!" className="text-white">Paddle</Link>
 									<p className="mb-1">
 										<Link to="#!" className="text-white">Futbol</Link>
 									</p>
-								</p>
+								</div>
 							</div>
 
 
