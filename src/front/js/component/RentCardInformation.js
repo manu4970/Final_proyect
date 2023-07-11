@@ -1,11 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../styles/InformationCard.css";
 import { Context } from "../store/appContext";
-import { useParams } from "react-router-dom";
 import SuccessComponent from "./Success";
-import { useNavigate } from "react-router-dom";
 
 const RentInformationCard = () => {
     const [selectedDate, setSelectedDate] = useState(null);
