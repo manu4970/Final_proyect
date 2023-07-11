@@ -113,7 +113,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 					const data = await resp.json();
 					setStore({ canchas: data })
-					console.log(store.canchas)
 					return data;
 				} catch (error) {
 					console.error("Error in getCanchas:", error);

@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../../styles/InformationCard.css";
 import { Context } from "../store/appContext";
 import SuccessComponent from "./Success";
-import { useNavigate } from "react-router-dom";
 import "../../styles/date_picker.css";
 
 
@@ -43,10 +42,11 @@ const RentInformationCard = () => {
                 const canchaFiltered = data.filter(rentas => rentas.cancha_id === cancha_id_selected);
                 const filteredRentas = canchaFiltered.filter(rentas => {
                     const rentasDate = new Date(rentas.date);
-                    const selectedDateValue = selectedDate.getDate();
+                    const selectedDateValue = selectedDate ? selectedDate.getDate() : null;
                     return (
-                        rentasDate.getFullYear() === selectedDate.getFullYear() &&
-                        rentasDate.getMonth() === selectedDate.getMonth() &&
+                        selectedDate &&
+                        rentasDate.getFullYear() === (selectedDate ? selectedDate.getFullYear() : null) &&
+                        rentasDate.getMonth() === (selectedDate ? selectedDate.getMonth() : null) &&
                         rentasDate.getDate() === selectedDateValue
                     );
                 });

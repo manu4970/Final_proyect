@@ -208,7 +208,7 @@ export const HomeLogin = () => {
             <div className="container-fluid d-flex align-items-center justify-content-center">
                 <div className="d-flex p-3 gap-2">
                     <select className="form-select " aria-label=".form-select-sm example" onChange={e => buscarComunas(e)}>
-                        <option selected>Region</option>
+                        <option value="">Region</option>
                         <option value="1">Arica y Parinacota</option>
                         <option value="2">Tarapaca</option>
                         <option value="3">Antofagasta</option>
@@ -226,17 +226,17 @@ export const HomeLogin = () => {
                         <option value="15">Aysén</option>
                         <option value="16">Magallanes</option>
                     </select>
-                    <select className="form-select" aria-label=".form-select-sm example" form-select-bg-size>
-                        <option selected>Comuna</option>
+                    <select className="form-select" aria-label=".form-select-sm example" form-select-bg-size="true" defaultValue="defaultComuna">
+                        <option value="" disabled>Comuna</option>
                         {
-                            comunasRegion.map((comuna) =>
-                                <option value={comuna}>{comuna}</option>
+                            comunasRegion.map((comuna, index) =>
+                                <option key={index} value={comuna}>{comuna}</option>
                             )
                         }
 
                     </select>
                     <select className="form-select" aria-label=".form-select-sm example">
-                        <option selected>Deporte</option>
+                        <option value="">Deporte</option>
                         <option value="1">Tenis</option>
                         <option value="2">Futbol</option>
                         <option value="3">Paddle</option>
@@ -250,7 +250,7 @@ export const HomeLogin = () => {
 
             </div>
             {store.canchas.map(cancha =>
-                <CanchaCard className="" cancha={cancha} />
+                <CanchaCard className="" key={cancha.id} cancha={cancha} />
             )}
         </>
     )
