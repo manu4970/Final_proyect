@@ -146,6 +146,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getCancha: async (cancha_id) => {
 				const options = {
 					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
 				};
 				try {
 					const resp = await fetch("https://ss-api-render-2.onrender.com/canchas/" + cancha_id, options);
@@ -199,6 +202,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
+			getRentas: async () => {
+				const options = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				};
+				try {
+					const resp = await fetch("https://ss-api-render-2.onrender.com/rentas", options);
+					if (resp.status !== 200) {
+						alert("Error fetching rentas");
+						return null;
+					}
+					const data = await resp.json();
+					return data;
+				} catch (error) {
+					console.error("Error in getRentas:", error);
+					return null;
+				}
+			},
 
 			saveImgProfile: async (img, user_id) => {
 				const options = {
@@ -254,26 +277,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("error en login");
 				}
 			},
-			rentCanchas: async (cancha_id, user_id, date, time, cantidad) => {
-				const options = {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						"cancha_id": cancha_id,
-						"user_id": user_id,
-						"date": date,
-						"time": time,
-						"cantidad": cantidad
-					})
-				};
+			rentCanchas: async (cancha_id, user_id, date, time, contadorArriendo) => {
 				try {
+					const options = {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							cancha_id,
+							user_id,
+							date,
+							time,
+							contadorArriendo
+						})
+					};
+
 					const resp = await fetch('https://ss-api-render-2.onrender.com/rentas', options);
 					if (resp.status !== 200) {
 						alert("error en fetch rentas");
 						return false;
 					}
+
 					const data = await resp.json();
 					return true;
 				} catch (error) {

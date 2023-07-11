@@ -1,0 +1,32 @@
+.react-datepicker__header {
+    text-align: center;
+    background-color: #6451cead;
+    border-bottom: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 8px;
+    position: relative;
+
+}
+
+.react-datepicker__today-button {
+    background: #6351ce;
+    border-top: 0px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 0;
+    clear: left;
+}
+
+.react-datepicker {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    background-color: rgba(131, 163, 173, 0.815);
+    color: #000;
+    border: 0px;
+    border-radius: 0;
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+}
