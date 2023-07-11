@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 import login from "../../styles/login.css";
@@ -16,13 +16,15 @@ export const Login2 = () => {
         event.preventDefault()
         setIsLoading(true)
         actions.login(email, pass).then(() => {
+            console.log(this)
             if (store.loginResp === true) {
                 setShowError(true)
                 setIsLoading(false)
+                store.loginResp = false
             } else {
                 setShowError(false)
-                navigate("/")
                 setShowError(true)
+                navigate("/")
             }
         })
 

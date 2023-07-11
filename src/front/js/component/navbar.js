@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../img/logo.png";
 import "../../styles/CanchaCard.css";
 import "../../styles/InformationCard.css";
 import "../../styles/navbar.css";
@@ -30,6 +31,7 @@ export function Navbar() {
   return (
     <nav className="navbar navbar-dark fixed-top" style={{ backgroundColor: "#1c2331" }} >
       <div className="container-fluid d-flex" style={{ backgroundColor: "#1c2331" }}>
+        <img src={logo} alt="Logo" style={{ width: "50px", height: "50px", marginLeft: "10px", marginRight: "5px" }} />
         <Link className="navbar-brand text-uppercase fw-bold" to="/" >Sport Spot</Link>
         <div className="Foo d-flex ms-auto" style={{ paddingRight: "10px" }}>
           <div>

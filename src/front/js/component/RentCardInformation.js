@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../styles/InformationCard.css";
 import { Context } from "../store/appContext";
-import { useParams } from "react-router-dom";
 import SuccessComponent from "./Success";
 import { useNavigate } from "react-router-dom";
 import "../../styles/date_picker.css";
+
 
 const RentInformationCard = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -228,95 +229,3 @@ const RentInformationCard = () => {
 export default RentInformationCard
 
 
-
-
-{/* <div>
-                <div classNameName="card bg-dark text-white">
-                    <img
-                        src="https://uploads-ssl.webflow.com/632871e15b53a0140af28aeb/633b061d864ce251bb36073e_pexels-markus-spiske-1752757.jpg"
-                        classNameName="card-img"
-                        alt="Stony Beach"
-                    />
-                    <div classNameName="card-img-overlay d-flex flex-column justify-content-end ">
-
-                        {canchaData.is_available ?
-                            <p classNameName="card-text bg-success flex align-items-center">Available</p> :
-                            <p classNameName="card-text bg-warning text-dark">Not Available</p>
-                        }
-
-                        <div classNameName="row">
-                            <div classNameName="col mt-4 pt-4">
-                                <h1 classNameName="card-title ">{canchaData.name}</h1>
-                                <h2 classNameName="card-text mt-4 pt-4"> {canchaData.detalle}</h2>
-
-                            </div>
-                            <div classNameName="col ">
-                                <div classNameName="col d-flex justify-content-end ">
-                                    <div>
-                                        <form onSubmit={handleSubmit}>
-                                            <div classNameName="form-group ">
-                                                <label htmlFor="name"></label>
-                                                <input type="text" classNameName="form-control bg-info " id="name" value={user.name || ""} required />
-                                            </div>
-                                            <div classNameName="form-group ">
-                                                <label htmlFor="email"></label>
-                                                <input type="email" classNameName="form-control bg-info" id="email" value={user.email || ""} required />
-                                            </div>
-                                            <div classNameName="form-group  mb-4 ">
-                                                <label htmlFor="phone"></label>
-                                                <input type="tel" classNameName="form-control bg-info" id="phone" placeholder="Phone" required />
-                                            </div>
-                                            <div classNameName="form-group ">
-                                                <label htmlFor="date"></label>
-                                                <DatePicker
-                                                    classNameName="form-control bg-info text-dark" placeholderText="Select Date"
-                                                    id="date"
-                                                    selected={selectedDate}
-                                                    onChange={(date) => setSelectedDate(date)}
-                                                    dateFormat="yyyy-MM-dd"
-                                                    required
-                                                />
-                                            </div>
-                                            <div classNameName="form-group text-dark mb-4">
-                                                <label htmlFor="time"></label>
-                                                <select
-                                                    classNameName="form-control bg-info"
-                                                    id="time"
-                                                    value={selectedTime}
-                                                    onChange={(e) => setSelectedTime(e.target.value)}
-                                                    required
-                                                >
-                                                    <option value="">Select a time</option>
-                                                    <option value="09:00">9:00AM</option>
-                                                    <option value="23:00">22:00PM</option>
-                                                </select>
-                                            </div>
-
-                                            <div classNameName="form-group text-dark mb-4">
-                                                <label htmlFor="cantidad"></label>
-                                                <select
-                                                    classNameName="form-control bg-info"
-                                                    id="cantidad"
-                                                    value={selectedCantidad}
-                                                    onChange={(e) => setSelectedCantidad(e.target.value)}
-                                                    required
-                                                >
-                                                    <option value="">Trae Pelota?</option>
-                                                    <option value="True">Si</option>
-                                                    <option value="False">No</option>
-
-                                                </select>
-                                            </div>
-                                            <button type="submit" classNameName="button-32">
-                                                Rent Now
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div> */}

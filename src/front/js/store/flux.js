@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loginLoading: false,
 			loginResp: null,
 			users: [],
+			addCanchaResp: [],
 			canchas: [],
 			imgProfile: [],
 			imgCancha: [],
@@ -166,7 +167,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			pushCancha: async (name, location, user_id, sportType, cantidad, detalle, is_available) => {
+			pushCancha: async (name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id) => {
+				// console.log(name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id)
 				const options = {
 					method: "POST",
 					headers: {
@@ -175,9 +177,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						"name": name,
 						"location": location,
+						"region": region,
+						"comuna": comuna,
+						"apertura": apertura,
+						"cierre": cierre,
+						"precio": precio,
 						"user_id": user_id,
 						"sportType": sportType,
-						"cantidad": cantidad,
+						"cantidadCanchas": cantidad,
 						"detalle": detalle,
 						"is_available": is_available
 					})
@@ -187,12 +194,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch('https://ss-api-render-2.onrender.com/canchas', options)
 
 					if (resp.status != 200) {
-						alert("error en fetch Post cancha")
+						setStore({ addCanchaResp: true })
 						return false
 					}
 
 					const data = await resp.json()
-					na
 					return true
 
 				}
