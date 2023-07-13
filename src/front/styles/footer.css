@@ -3,3 +3,10 @@
     position: fixed;
     bottom: 0px;
 }
+
+
+@media (max-width: 767px) {
+    .footer {
+        display: none;
+    }
+}
