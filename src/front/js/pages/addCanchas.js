@@ -36,16 +36,8 @@ export const AddCanchas = () => {
     const [showError, setShowError] = useState(false);
 
 
-    console.log(location)
     useEffect(() => {
         setUser_id(parseInt(sessionStorage.getItem("id")))
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
-
-        return () => {
-            clearInterval(interval);
-        };
     }, []);
 
     function buscarCierre(e) {
@@ -221,6 +213,7 @@ export const AddCanchas = () => {
 
     return (
         <>
+            <h1 className="d-flex align-items-center justify-content-center mt-4">Publish your court</h1>
             <section className="d-flex alaign-items-center justify-content-center gap-5">
                 <form className="row g-3" style={{ height: "550px", width: "600px", marginTop: "65px" }}>
                     <div className="col-12">
@@ -299,7 +292,6 @@ export const AddCanchas = () => {
                         {isLoading ? <div className="spinner-border mt-3 align-items-center" role="status"></div> : null}
                     </div>
                 </form>
-                <img className="" style={{ height: "550px", width: "600px", marginTop: "65px" }} src={currentImage} alt="..." />
             </section>
         </>
     )
