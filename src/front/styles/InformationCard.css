@@ -66,3 +66,36 @@
   -webkit-filter: saturate(0.2) opacity(0.5);
   cursor: not-allowed;
 }
+
+
+.notspan {
+  width: 60px;
+  border: none;
+  border-bottom: 1px solid #6351ce !important;
+  border-radius: 0;
+  background-color: rgba(69, 70, 71, 0.184) !important;
+}
+
+.notspan2 {
+  justify-content: center;
+  display: flex;
+}
+
+
+
+.custom-select {
+  background-color: black;
+  color: white;
+}
+
+
+.option2 {
+  background-color: black !important;
+}
+
+
+.form-group .DatePicker {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 0 !important;
+}
