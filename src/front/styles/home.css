@@ -81,6 +81,9 @@ body {
     background: #8a132c;
 }
 
+.register-photo form .btn-primary:active {
+    transform: translateY(1px);
+}
 
 .register-photo form .already {
     display: block;
