@@ -11,7 +11,7 @@ export function Navbar() {
   const navigate = useNavigate();
 
   const handleClickLogOut = () => {
-    window.location.reload(false)
+    // window.location.reload(false)
     sessionStorage.removeItem("auth_token")
     sessionStorage.removeItem("id")
     sessionStorage.removeItem("isLoggedIn")

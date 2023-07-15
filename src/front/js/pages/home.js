@@ -58,12 +58,12 @@ export const Home = () => {
 				<div className="d-flex justify-content-between ">
 					<div className="btnhome">
 						<Link className="btnhome btn-lg btn-dark" to={logged ? "/home" : "/login"}>
-							<span>Reserva tu Cancha</span>
+							<span>Rent your spot</span>
 						</Link>
 					</div>
 					<div className="btnhome">
 						<Link className="btnhome btn-lg btn-dark" to="/addcanchas">
-							<span>Publica tu cancha</span>
+							<span>Add your spot</span>
 						</Link>
 					</div>
 				</div>
