@@ -2,16 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import regiones from "../store/regiones";
+import UploadWidget from "../component/UploadWidget";
 
 export const AddCanchas = () => {
     const { store, actions } = useContext(Context)
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = [
-        "https://uploads-ssl.webflow.com/632871e15b53a0140af28aeb/633b061d864ce251bb36073e_pexels-markus-spiske-1752757.jpg",
-        "https://journey.app/blog/wp-content/uploads/2021/11/reglas-deportivas_Tenis_.jpg",
-        "https://thephysiocompany.co.uk/wp-content/uploads/football.jpg",
-    ];
-    const currentImage = images[currentImageIndex];
     const navigate = useNavigate()
 
     const comunas = regiones
@@ -34,7 +29,13 @@ export const AddCanchas = () => {
     const [horasCierre, setHorasCierre] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [showError, setShowError] = useState(false);
+    const [img, setImg] = useState("")
 
+
+    const handlePictureUpload = (uploadedPicture) => {
+        setImg(uploadedPicture);
+
+    };
 
     useEffect(() => {
         setUser_id(parseInt(sessionStorage.getItem("id")))
@@ -192,11 +193,12 @@ export const AddCanchas = () => {
     }
 
 
-    console.log(region)
+
     const handleClick = (e) => {
-        event.preventDefault()
+        e.preventDefault()
         setIsLoading(true)
-        actions.pushCancha(name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id).then(() => {
+        console.log(name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id, img)
+        actions.pushCancha(name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id, img).then(() => {
             console.log(this)
             if (store.addCanchaResp === true) {
                 setShowError(true)
@@ -215,23 +217,28 @@ export const AddCanchas = () => {
         <>
             <h1 className="d-flex align-items-center justify-content-center mt-4">Publish your court</h1>
             <section className="d-flex alaign-items-center justify-content-center gap-5">
-                <form className="row g-3" style={{ height: "550px", width: "600px" }}>
+                <form className="row g-3" style={{ height: "550px", width: "600px", marginTop: "20px" }}>
+
                     <div className="col-12">
                         <label htmlFor="inputAddress" className="form-label">Name</label>
                         <input type="text" className="form-control" id="inputAddress" placeholder="Introduce the name of your recint" value={name} onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="inputPassword4" className="form-label">Region</label>
-                        <select id="inputState" className="form-select" onChange={e => { buscarComunas(e); setRegion(e.target.value); }}>
-                            <option selected  >Choose...</option>
+                        <select id="inputState" className="form-select" value={region} onChange={e => { buscarComunas(e); setRegion(e.target.value); }}>
+                            <option value="">Choose...</option>
                             {regiones.map((region, index) => {
                                 return <option key={index} value={index + 1}>{region.region}</option>
                             })}
                         </select>
+
+
+
+
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="inputEmail4" className="form-label" >Comuna</label>
-                        <select id="inputState" className="form-select" onChange={e => setComuna(e.target.value)}>
+                        <select id="inputState" className="form-select" value={comuna} onChange={e => setComuna(e.target.value)}>
                             <option selected>Choose...</option>
                             {comunasRegion.map((comuna, index) =>
                                 <option value={comuna} key={index}>{comuna}</option>
@@ -240,11 +247,11 @@ export const AddCanchas = () => {
                     </div>
                     <div className="col-12">
                         <label htmlFor="inputAddress2" className="form-label" >Address</label>
-                        <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value={location} onChange={(e) => setLocation(e.target.value)} />
+                        <input type="text" className="form-control" id="inputAddress2" placeholder="Avenida Libertador General Bernardo O'Higgins #1" value={location} onChange={(e) => setLocation(e.target.value)} />
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="inputCity" className="form-label" >Sport</label>
-                        <select id="inputState" className="form-select" onChange={e => setSportType(e.target.value)}>
+                        <select id="inputState" className="form-select" value={sportType} onChange={e => setSportType(e.target.value)}>
                             <option selected>Choose...</option>
                             {sportTypes.map((sport, index) => {
                                 return <option key={index} value={sport}>{sport}</option>
@@ -253,6 +260,7 @@ export const AddCanchas = () => {
                     </div>
                     <div class="mb-3 col-md-6">
                         <label htmlFor="inputCity" className="form-label">Cost per hour</label>
+
                         <div className=" input-group">
                             <span class="input-group-text">$</span>
                             <input type="text" className="form-control" id="inputCity" value={precio} onChange={(e) => setPrecio(parseInt(e.target.value))} />
@@ -272,6 +280,7 @@ export const AddCanchas = () => {
                                     )}
                                 </select>
                             </div>
+
                             <div className="col-md-6">
                                 <select id="inputState" className="form-select" onChange={e => setCierre(parseInt(e.target.value))}>
                                     <option selected>Closes at</option>
@@ -281,12 +290,16 @@ export const AddCanchas = () => {
                                         )
                                     })}
                                 </select>
+
                             </div>
+
                         </div>
+
                     </div>
+
                     <div className="mb-3">
-                        <label htmlFor="exampleFormControlTextarea1" className="form-label">More Info</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={detalle} onChange={(e) => setDetalle(e.target.value)}></textarea>
+                        <label htmlFor="exampleFormControlTextarea1" className="form-label">Additional Details</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Enter more information about the location here..." rows="3" value={detalle} onChange={(e) => setDetalle(e.target.value)}></textarea>
                     </div>
                     <div className="col-12">
                         <button type="submit" className="btn btn-primary" onClick={handleClick}>
@@ -295,6 +308,13 @@ export const AddCanchas = () => {
                         {isLoading ? <div className="spinner-border mt-3 align-items-center" role="status"></div> : null}
                     </div>
                 </form>
+                <div className="col-3">
+                    <UploadWidget handleUpload={handlePictureUpload} />
+                    <div className="col-3">
+                        {img && <img src={img} alt="Uploaded Picture" />}
+                    </div>
+
+                </div>
             </section>
         </>
     )

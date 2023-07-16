@@ -188,8 +188,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			pushCancha: async (name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id) => {
-				// console.log(name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id)
+			pushCancha: async (name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id, img) => {
+
 				const options = {
 					method: "POST",
 					headers: {
@@ -207,9 +207,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"sportType": sportType,
 						"cantidadCanchas": cantidad,
 						"detalle": detalle,
-						"is_available": is_available
+						"is_available": is_available,
+						"img": img
 					})
+
 				}
+
 				try {
 
 					const resp = await fetch('https://ss-api-render-2.onrender.com/canchas', options)

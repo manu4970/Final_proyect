@@ -6,6 +6,7 @@ import { Context } from "../store/appContext";
 const CanchaCard = ({ cancha }) => {
   const { store, actions } = useContext(Context);
   const [owner, setOwner] = useState({});
+  const imageUrl = cancha.img || "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png";
   const canchaTypeIcon = {
     Tennis: <i className="fa-solid fa-racquet"></i>,
     Football: <i className="fa-solid fa-futbol"></i>,
@@ -21,16 +22,17 @@ const CanchaCard = ({ cancha }) => {
   };
 
 
+
   return (
-    <section className=" dark m-0 p-0">
-      <div className="container py-4">
+    <section className="dark">
+      <div className="container py-4 ">
         <h1 className="h1 text-center" id="pageHeaderTitle"></h1>
 
-        <article className="postcard dark blue">
+        <article className="postcard dark blue ">
           <a className="postcard__img_link" href="#">
             <img
               className="postcard__img"
-              src="https://cdn.versacourt.com/cmss_files/imagelibrary/general-use/thb-court-size.jpg"
+              src={imageUrl}
               alt="Image Title"
             />
           </a>
