@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loginLoading: false,
 			loginResp: null,
 			users: [],
+			userCanchas: [],
 			addCanchaResp: [],
 			canchas: [],
 			imgProfile: [],
@@ -96,6 +97,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			fetchUserCanchas: async (user_id) => {
+				const options = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				};
+				try {
+					const resp = await fetch("https://ss-api-render-2.onrender.com/users/" + user_id + "/canchas", options);
+					if (resp.status !== 200) {
+						alert("Error fetching canchas");
+						return true;
+					}
+					const data = await resp.json();
+					setStore({ userCanchas: data })
+					return data
+				} catch (error) {
+					console.error("Error in getCanchas:", error);
+					return true;
+				}
+			},
 
 			fetchCanchas: async () => {
 				const options = {

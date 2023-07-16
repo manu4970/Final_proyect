@@ -93,3 +93,13 @@ body {
     opacity: 0.9;
     text-decoration: none;
 }
+
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.child {
+    flex-basis: 33.33333%;
+}
