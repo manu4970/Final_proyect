@@ -207,7 +207,7 @@ export const AddCanchas = () => {
             } else {
                 setShowError(false)
                 setShowError(true)
-                navigate("/profile")
+                navigate("/admin")
             }
         })
 
@@ -217,7 +217,6 @@ export const AddCanchas = () => {
         <>
             <h1 className="d-flex align-items-center justify-content-center mt-4">Publish your court</h1>
             <section className="d-flex alaign-items-center justify-content-center gap-5">
-
                 <form className="row g-3" style={{ height: "550px", width: "600px", marginTop: "20px" }}>
 
                     <div className="col-12">
@@ -259,11 +258,15 @@ export const AddCanchas = () => {
                             })}
                         </select>
                     </div>
-                    <div className="col-md-6">
+                    <div class="mb-3 col-md-6">
                         <label htmlFor="inputCity" className="form-label">Cost per hour</label>
-                        <input type="text" className="form-control" id="inputCity" value={precio} placeholder="$" onChange={(e) => setPrecio(parseInt(e.target.value))} />
+
+                        <div className=" input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="text" className="form-control" id="inputCity" value={precio} onChange={(e) => setPrecio(parseInt(e.target.value))} />
+                        </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 ">
                         <label htmlFor="inputCity" className="form-label">Disponibility</label>
                         <div className="d-flex gap-1">
                             <div className="col-md-6">

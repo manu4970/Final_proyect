@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import "../../styles/home.css";
 import CanchaCard from "../component/CanchaCard";
 import { Context } from "../store/appContext";
 
@@ -227,7 +228,7 @@ export const HomeLogin = () => {
                         <option value="16">Magallanes</option>
                     </select>
                     <select className="form-select" aria-label=".form-select-sm example" form-select-bg-size="true" defaultValue="defaultComuna">
-                        <option value="" disabled>Comuna</option>
+                        <option value="">Commune</option>
                         {
                             comunasRegion.map((comuna, index) =>
                                 <option key={index} value={comuna}>{comuna}</option>
@@ -236,12 +237,12 @@ export const HomeLogin = () => {
 
                     </select>
                     <select className="form-select" aria-label=".form-select-sm example">
-                        <option value="">Deporte</option>
-                        <option value="1">Tenis</option>
-                        <option value="2">Futbol</option>
+                        <option value="">Sport</option>
+                        <option value="1">Tennis</option>
+                        <option value="2">Football</option>
                         <option value="3">Paddle</option>
-                        <option value="4">Básquetbol</option>
-                        <option value="5">Baby Futbol</option>
+                        <option value="4">Basketball</option>
+                        <option value="5">Baby Football</option>
                     </select>
                 </div>
                 <div className="searchForm">
@@ -249,9 +250,15 @@ export const HomeLogin = () => {
                 </div>
 
             </div>
-            {store.canchas.map(cancha =>
-                <CanchaCard className="" key={cancha.id} cancha={cancha} />
-            )}
+            <section>
+                <div className="">
+                    <div className=" parent col-sm-12 mb-3 mb-sm-6 align-items-center justify-content-center ms-left">
+                        {store.canchas.map(cancha =>
+                            <CanchaCard className="" key={cancha.id} cancha={cancha} />
+                        )}
+                    </div>
+                </div>
+            </section>
         </>
     )
 };

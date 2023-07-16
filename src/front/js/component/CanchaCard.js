@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Context } from "../store/appContext";
-import "../../styles/CanchaCard.css";
 import { Link } from 'react-router-dom';
+import "../../styles/CanchaCard.css";
+import { Context } from "../store/appContext";
 
 const CanchaCard = ({ cancha }) => {
   const { store, actions } = useContext(Context);
@@ -52,7 +52,7 @@ const CanchaCard = ({ cancha }) => {
               </li>
               <li className="tag__item play blue btn">
                 <Link to={`/rent/${cancha?.id}`}>
-                  <i className="fas fa-basketball-ball mr-2"></i> Arrendar
+                  <i className="fas fa-basketball-ball mr-2"></i> Rent
                 </Link>
               </li>
             </ul>

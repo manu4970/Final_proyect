@@ -5,7 +5,14 @@
     height: 100%;
 } */
 
+html {
+    height: 100%;
+
+}
 
 body {
     background-color: black !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
