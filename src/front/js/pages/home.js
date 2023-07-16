@@ -44,7 +44,7 @@ export const Home = () => {
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
 					backgroundAttachment: "fixed",
-					height: "100vh",
+					height: "77vh",
 					display: "flex",
 					flexDirection: "column",
 					justifyContent: "center",
