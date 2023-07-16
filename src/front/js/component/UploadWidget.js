@@ -22,7 +22,7 @@ const UploadWidget = ({ handleUpload }) => {
                 function (error, result) {
                     if (!error && result && result.event === "success") {
                         console.log('Done! Here is the image info: ', result.info.secure_url);
-                        handleUpload(result.info.secure_url); // Call the handleUpload function with the image URL
+                        handleUpload(result.info.secure_url);
                     }
                 }
             );
@@ -31,7 +31,7 @@ const UploadWidget = ({ handleUpload }) => {
     }, []);
 
     return (
-        <button className='fa fa-camera btn' onClick={() => widgetRef.current.open()}></button>
+        <button className='fa fa-camera btn col-md-6' onClick={() => widgetRef.current.open()}>  </button>
     );
 };
 
