@@ -231,10 +231,6 @@ export const AddCanchas = () => {
                                 return <option key={index} value={index + 1}>{region.region}</option>
                             })}
                         </select>
-
-
-
-
                     </div>
                     <div className="col-md-6">
                         <label htmlFor="inputEmail4" className="form-label" >Comuna</label>

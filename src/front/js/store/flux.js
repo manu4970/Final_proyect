@@ -156,7 +156,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					const data = await resp.json()
-					console.log(data)
 					setStore({ user: data })
 					return data
 
