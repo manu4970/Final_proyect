@@ -213,7 +213,7 @@ function AdminCancha() {
 
     return (
         <>
-            <section>
+            <section className='mt-5'>
                 <h1 className='d-flex align-items-center justify-content-center p-4'>Administrate your courts</h1>
             </section>
             <div className='container'>

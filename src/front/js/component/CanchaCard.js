@@ -23,11 +23,9 @@ const CanchaCard = ({ cancha }) => {
     return canchaTypeIcon[sportType] || null;
   };
 
-
-
   return (
     <section className="dark">
-      <div className="container py-4 ">
+      <div className="container">
         <h1 className="h1 text-center" id="pageHeaderTitle"></h1>
 
         <article className="postcard dark blue ">
@@ -73,36 +71,3 @@ const CanchaCard = ({ cancha }) => {
 export default CanchaCard;
 
 
-  // const handleMouseEnter = () => {
-  //   const imageTimer = setTimeout(() => {
-  //     setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 2000);
-  //   setImageTimer(imageTimer);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   clearTimeout(imageTimer);
-  // };
-
-  // let imageTimer;
-
-
-
-                // onMouseEnter={handleMouseEnter}
-              // onMouseLeave={handleMouseLeave}
-
-
-
-
- // useEffect(() => {
-  //   const fetchOwnerData = async () => {
-  //     try {
-  //       const owner = await actions.getUser(cancha.user_id);
-  //       setOwner(owner);
-  //     } catch (error) {
-  //       console.log("Error fetching owner:", error);
-  //     }
-  //   }; fetchOwnerData();
-  // }, []);
-
-  // console.log(owner, "owner");

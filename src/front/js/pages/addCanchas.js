@@ -215,7 +215,7 @@ export const AddCanchas = () => {
 
     return (
         <>
-            <h1 className="d-flex align-items-center justify-content-center mt-4">Publish your court</h1>
+            <h1 className="d-flex align-items-center justify-content-center" style={{ marginTop: "100px" }}>Publish your court</h1>
             <section className="d-flex alaign-items-center justify-content-center gap-5">
                 <form className="row g-3" style={{ height: "550px", width: "600px" }}>
 
