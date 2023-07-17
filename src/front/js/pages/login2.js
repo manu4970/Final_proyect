@@ -19,6 +19,7 @@ export const Login2 = () => {
             console.log(this)
             if (store.loginResp === true) {
                 setShowError(true)
+
                 setIsLoading(false)
                 store.loginResp = false
             } else {

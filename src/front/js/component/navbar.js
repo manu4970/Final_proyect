@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png";
 import "../../styles/CanchaCard.css";
@@ -7,11 +7,15 @@ import "../../styles/navbar.css";
 import { Context } from "../store/appContext";
 
 export function Navbar() {
-  const { store } = useContext(Context);
+  const { actions, store } = useContext(Context);
   const navigate = useNavigate();
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [lastname, setLastname] = useState("");
+  const sessionId = sessionStorage.getItem('id')
 
   const handleClickLogOut = () => {
-    // window.location.reload(false)
+    window.location.reload(false)
     sessionStorage.removeItem("auth_token")
     sessionStorage.removeItem("id")
     sessionStorage.removeItem("isLoggedIn")
@@ -25,6 +29,7 @@ export function Navbar() {
   }
 
   const handleClickLogIn = () => {
+
     navigate("/login")
   };
 
@@ -45,23 +50,27 @@ export function Navbar() {
               <div className="row">
                 <div className="col">
                   <div className="d-flex justify-content-center">
-                    <div class="dropdown">
+                    <div className="dropdown">
                       <div className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                         <Link to="/profile">
                           <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         </Link>
                       </div>
-                      <ul class="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331" }}>
-                        <span className="d-flex text-light p-2">
+                      <ul className="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331", width: "250px" }}>
+                        <span className="d-flex text-light align-items-center gap-3">
                           <span className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                             <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </span>
-                          <li><p>Manuel Perez</p></li>
-                          <li><p>manu@admin.com</p></li>
-
+                          <li>
+                            <span className="">
+                              <h4 className="mb-0">{user} {lastname}</h4>
+                              <p className="mb-0">{email}</p>
+                            </span>
+                          </li>
                         </span>
+                        <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item text-white" href="/homelogin">Rent a spot</a></li>
-                        <li><a class="dropdown-item text-white" href="/admin">Admin your spot</a></li>
+                        <li><a class="dropdown-item text-white" href="/admin">Administrate</a></li>
                       </ul>
                     </div>
                   </div>
