@@ -21,6 +21,7 @@ import Profile2 from "./pages/profile2";
 import { Signup } from "./pages/signup";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+import { Homereloaded } from "./pages/homereloaded";
 
 
 
@@ -40,14 +41,14 @@ const Layout = () => {
                 <Navbar />
                 <ScrollToTop>
                     <Routes>
-                        <Route element={<Home />} path="/" />
+                        <Route element={<Homereloaded />} path="/" />
                         <Route element={<AdminCancha />} path="/admin" />
                         <Route element={<HomeLogin />} path="/home" />
                         <Route element={<Login2 />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
                         <Route element={<Profile2 />} path="/profile" />
                         <Route element={<RenderCanchas />} path="/canchas" />
-                        <Route element={<ForTesting />} path="/test" />
+                        <Route element={<Homereloaded />} path="/test" />
                         {/* <Route element={<RentInformationCard />} path="/rent/:id" /> */}
                         <Route element={<RentInformationCard />} path="/rent/:id" />
                         <Route element={<HomeLogin />} path="/homelogin" />

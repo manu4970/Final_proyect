@@ -73,8 +73,6 @@ export const Footer = () => (
 			</div>
 		</section>
 
-		<div className="text-center" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-			© 1949 - {new Date().getFullYear()} sportspot.com
-		</div>
+
 	</footer>
 );

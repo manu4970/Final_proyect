@@ -67,6 +67,7 @@ a:hover {
 
 .postcard .postcard__title {
     font-size: 1.75rem;
+
 }
 
 .postcard .postcard__img {
@@ -250,7 +251,6 @@ a:hover {
 .container.py-4 {
 
     width: 100%;
-    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }

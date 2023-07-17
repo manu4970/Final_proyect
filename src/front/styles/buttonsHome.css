@@ -1,6 +1,6 @@
 .btnhome {
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgb(28, 35, 49);
     font-family: 'Work Sans', sans-serif;
     font-size: 22px;
     font-weight: 600;
@@ -54,7 +54,7 @@
 }
 
 .btnhome span {
-    padding: 10px 20px;
+    padding: 10px 60px;
     display: block;
     position: relative;
     z-index: 1;

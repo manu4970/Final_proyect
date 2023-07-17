@@ -82,6 +82,12 @@
   display: flex;
 }
 
+.notspan3 {
+  border: none;
+  border-bottom: 1px solid #6351ce !important;
+  border-radius: 0;
+  background-color: rgba(69, 70, 71, 0.184) !important;
+}
 
 
 .custom-select {
@@ -95,7 +101,7 @@
 }
 
 
-.form-group .DatePicker {
+.form-group {
   width: 100% !important;
   max-width: 100% !important;
   margin-bottom: 0 !important;

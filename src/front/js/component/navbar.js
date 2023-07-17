@@ -62,8 +62,11 @@ export function Navbar() {
                           />
                         </Link>
                       </div>
+
+
                       <ul className="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331", width: "250px" }}>
                         <span className="d-flex text-light align-items-center gap-3">
+
                           <span className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                             <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </span>
@@ -74,9 +77,11 @@ export function Navbar() {
                             </span>
                           </li>
                         </span>
+
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item text-white" href="/homelogin">Rent a spot</a></li>
                         <li><a class="dropdown-item text-white" href="/admin">Administrate</a></li>
+
                       </ul>
                     </div>
                   </div>
