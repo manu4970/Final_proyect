@@ -217,7 +217,7 @@ export const AddCanchas = () => {
         <>
             <h1 className="d-flex align-items-center justify-content-center mt-4">Publish your court</h1>
             <section className="d-flex alaign-items-center justify-content-center gap-5">
-                <form className="row g-3" style={{ height: "550px", width: "600px", marginTop: "20px" }}>
+                <form className="row g-3" style={{ height: "550px", width: "600px" }}>
 
                     <div className="col-12">
                         <label htmlFor="inputAddress" className="form-label">Name</label>
@@ -236,7 +236,7 @@ export const AddCanchas = () => {
 
 
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 ">
                         <label htmlFor="inputEmail4" className="form-label" >Comuna</label>
                         <select id="inputState" className="form-select" value={comuna} onChange={e => setComuna(e.target.value)}>
                             <option selected>Choose...</option>
@@ -258,11 +258,11 @@ export const AddCanchas = () => {
                             })}
                         </select>
                     </div>
-                    <div class="mb-3 col-md-6">
+                    <div className="mb-3 col-md-6">
                         <label htmlFor="inputCity" className="form-label">Cost per hour</label>
 
                         <div className=" input-group">
-                            <span class="input-group-text">$</span>
+                            <span className="input-group-text">$</span>
                             <input type="text" className="form-control" id="inputCity" value={precio} onChange={(e) => setPrecio(parseInt(e.target.value))} />
                         </div>
                     </div>
@@ -311,13 +311,21 @@ export const AddCanchas = () => {
 
 
 
-                <div className="col-3">
+                <div className="col-3 mt-4 pt-2">
                     <UploadWidget handleUpload={handlePictureUpload} />
-                    <div className="col-3">
-                        {img && <img src={img} alt="Uploaded Picture" />}
+                    <div className="box pt-2" style={{ width: "100%", height: "100%" }}>
+                        {img ? (
+                            <img className="img-fluid rounded" src={img} alt="Uploaded Picture" />
+                        ) : (
+                            <img
+                                className="img-fluid rounded"
+                                src="https://res.cloudinary.com/dflvts35y/image/upload/v1689557315/s96y6hbfaxor3qyg8pfy.png"
+                                alt="Default Picture"
+                            />
+                        )}
                     </div>
-
                 </div>
+
             </section>
         </>
     )

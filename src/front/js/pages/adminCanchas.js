@@ -20,7 +20,7 @@ function AdminCancha() {
             <div className='container'>
                 <div className='row d-flex align-items-center justify-content-center'>
                     <div className='col-10'>
-                        <table class="table table-dark table-striped">
+                        <table className="table table-dark table-striped">
                             <caption>List of courts</caption>
                             <thead>
                                 <tr>
