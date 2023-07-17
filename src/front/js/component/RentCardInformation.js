@@ -8,6 +8,8 @@ import "../../styles/date_picker.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandshakeSimple } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const RentInformationCard = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState("");
@@ -29,6 +31,7 @@ const RentInformationCard = () => {
 
     const [canchaLoading, setCanchaLoading] = useState(false);
     const [userLoading, setUserLoading] = useState(false);
+
 
 
     useEffect(() => {
@@ -164,8 +167,8 @@ const RentInformationCard = () => {
             {error && <div>Error: {error}</div>}
             {!error && (
                 <div className="container mt-5">
-                    <div className="row">
-                        <div className="col-lg-6 mb-3 mb-lg-0">
+                    <div className="row ">
+                        <div className="col-lg-6 mb-3 mb-lg-0 mt-5">
                             <div className="img-container">
                                 <img
                                     src={canchaData.img}
@@ -174,7 +177,7 @@ const RentInformationCard = () => {
                                 />
                             </div>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 mt-5">
                             <div className="col bg-dark form-container">
                                 <form onSubmit={handleSubmit}>
                                     <h2 className="text-center pt-2"><strong>Book</strong> it</h2>
@@ -291,9 +294,11 @@ const RentInformationCard = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
             )}
         </>
+
     );
 };
 

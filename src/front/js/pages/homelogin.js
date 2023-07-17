@@ -229,8 +229,8 @@ export const HomeLogin = () => {
 
     return (
         <>
-            <div className="container-fluid d-flex align-items-center justify-content-center">
-                <div className="d-flex p-3 gap-2">
+            <div className="container-fluid d-flex align-items-center justify-content-center mt-5">
+                <div className="d-flex p-3 gap-2 mt-5">
                     <select className="form-select " defaultValue={selectedRegion} aria-label=".form-select-sm example" onChange={e => { buscarComunas(e); setFilteredRegion(e.target.value); }}>
                         <option value="">Region</option>
                         <option value="1">Metropolitana</option>
@@ -269,13 +269,10 @@ export const HomeLogin = () => {
                         <option value="5">Baby Football</option>
                     </select>
                 </div>
-                <div className="searchForm">
-                    <button type="button" className="btn btn- me-3">Search</button>
-                </div>
 
             </div>
             <section>
-                <div className="parent col-sm-12 mb-3 mb-sm-6 align-items-center justify-content-center ms-left">
+                <div className="parent col-sm-12 mb-sm-6 align-items-center justify-content-center ms-left">
                     {selectedComuna
                         ? store.canchas
                             .filter((cancha) => cancha.region.includes(selectedRegion) && cancha.comuna.includes(selectedComuna))
