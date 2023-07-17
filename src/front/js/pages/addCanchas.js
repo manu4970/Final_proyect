@@ -308,6 +308,9 @@ export const AddCanchas = () => {
                         {isLoading ? <div className="spinner-border mt-3 align-items-center" role="status"></div> : null}
                     </div>
                 </form>
+
+
+
                 <div className="col-3">
                     <UploadWidget handleUpload={handlePictureUpload} />
                     <div className="col-3">

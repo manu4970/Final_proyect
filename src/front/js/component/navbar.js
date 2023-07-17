@@ -45,13 +45,13 @@ export function Navbar() {
               <div className="row">
                 <div className="col">
                   <div className="d-flex justify-content-center">
-                    <div class="dropdown">
+                    <div className="dropdown">
                       <div className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                         <Link to="/profile">
                           <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         </Link>
                       </div>
-                      <ul class="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331" }}>
+                      <ul className="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331" }}>
                         <span className="d-flex text-light p-2">
                           <span className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                             <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -60,8 +60,8 @@ export function Navbar() {
                           <li><p>manu@admin.com</p></li>
 
                         </span>
-                        <li><a class="dropdown-item text-white" href="/homelogin">Rent a spot</a></li>
-                        <li><a class="dropdown-item text-white" href="/admin">Admin your spot</a></li>
+                        <li><a className="dropdown-item text-white" href="/homelogin">Rent a spot</a></li>
+                        <li><a className="dropdown-item text-white" href="/admin">Admin your spot</a></li>
                       </ul>
                     </div>
                   </div>

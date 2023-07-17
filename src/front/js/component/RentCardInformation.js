@@ -6,7 +6,7 @@ import "../../styles/InformationCard.css";
 import { Context } from "../store/appContext";
 import "../../styles/date_picker.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faHandshakeSimple } from "@fortawesome/free-solid-svg-icons";
 
 const RentInformationCard = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -161,138 +161,134 @@ const RentInformationCard = () => {
 
     return (
         <>
-
             {error && <div>Error: {error}</div>}
             {!error && (
-                <div className="container">
-                    <div className="register-photo">
-                        <div className="form-container">
-                            <div className="image-holder"></div>
-                            <form onSubmit={handleSubmit}>
-                                <h2 className="text-center"><strong>Book</strong> it</h2>
+                <div className="container mt-5">
+                    <div className="row">
+                        <div className="col-lg-6 mb-3 mb-lg-0">
+                            <div className="img-container">
+                                <img
+                                    src={canchaData.img}
+                                    alt=""
+                                    style={{ width: "100%", height: "auto" }}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="col bg-dark form-container">
+                                <form onSubmit={handleSubmit}>
+                                    <h2 className="text-center pt-2"><strong>Book</strong> it</h2>
 
-                                <div className="form-group input-group input-group-sm mt-2 bg-dark">
-                                    <span className="notspan input-group-text text-white border-0" id="inputGroup-sizing-sm">
-                                        Spot :
-                                    </span>
-                                    {canchaLoading ? (
-                                        <div className="loading-icon">
-                                            <FontAwesomeIcon icon={faSpinner} spin />
-                                        </div>
-
-                                    ) : (
+                                    <div className="form-group input-group input-group-sm mt-2 bg-dark">
+                                        <span className="notspan input-group-text text-white border-0" id="inputGroup-sizing-sm">
+                                            Spot :
+                                        </span>
                                         <input
-                                            className="form-control"
+                                            className="form-control bg-dark text-white notspan"
                                             type="text"
                                             name="cancha_name"
                                             value={canchaData.name || ""}
                                             required
-                                            disabled={!selectedTime || canchaLoading}
+                                            disabled={!selectedTime}
                                             onChange={(e) => setCanchaData({ ...canchaData, name: e.target.value })}
                                         />
-                                    )}
-                                </div>
+                                    </div>
 
-                                <div className="form-group input-group input-group-sm mt-2 bg-dark">
-                                    <span className="notspan input-group-text text-white border-0" id="inputGroup-sizing-sm">
-                                        Name :
-                                    </span>
-                                    {userLoading ? (
-                                        <div className="loading-icon">
-                                            <FontAwesomeIcon icon={faSpinner} spin />
-                                        </div>
-                                    ) : (
+                                    <div className="form-group input-group input-group-sm mt-2 bg-dark">
+                                        <span className="notspan input-group-text text-white border-0" id="inputGroup-sizing-sm">
+                                            Name :
+                                        </span>
                                         <input
-                                            className="form-control"
+                                            className="form-control bg-dark text-white notspan"
                                             type="name"
                                             name="name"
                                             id="name"
                                             value={user.name || ""}
                                             required
-                                            disabled={!selectedTime || userLoading}
+                                            disabled={!selectedTime}
                                         />
-                                    )}
-                                </div>
+                                    </div>
 
-                                <div className="form-group input-group input-group-sm mt-2 bg-dark">
-                                    <span className="notspan input-group-text text-white border-0" id="inputGroup-sizing-sm">
-                                        Email:
-                                    </span>
-                                    {userLoading ? (
-                                        <div className="loading-icon">
-                                            <FontAwesomeIcon icon={faSpinner} spin />
-                                        </div>
-                                    ) : (
+                                    <div className="form-group input-group input-group-sm mt-2 bg-dark d-flex ">
+                                        <span className="notspan input-group-text text-white border-0 " id="inputGroup-sizing-sm">
+                                            Email:
+                                        </span>
                                         <input
-                                            className="form-control"
+                                            className="form-control bg-dark text-white notspan"
                                             type="email"
                                             name="email"
                                             value={user.email || ""}
                                             required
                                             disabled={!selectedTime}
                                         />
-                                    )}
-                                </div>
+                                    </div>
+                                    <div className="container p-0 mt-2">
+                                        <div className="row">
+                                            <div className="col ">
+                                                <div className="form-group  bg-dark d-flex ">
+                                                    <label htmlFor="date"></label>
+                                                    <span className="notspan input-group-text text-white border-0 justify-content-center bg-dark pb-3" id="inputGroup-sizing-sm"> <i className="fa-regular fa-calendar-days"></i></span>
+                                                    <DatePicker
+                                                        className="form-control bg-dark text-white notspan3 p-2"
+                                                        placeholderText="Select a Date"
+                                                        id="date"
+                                                        selected={selectedDate}
+                                                        onChange={(date) => setSelectedDate(date)}
+                                                        dateFormat="yyyy-MM-dd"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col">
+                                                <div className="form-group bg-dark d-flex">
+                                                    <label htmlFor="time"></label>
+                                                    <span className="notspan input-group-text text-white border-0 justify-content-center bg-dark pb-3" id="inputGroup-sizing-sm">
+                                                        <i className="fa-regular fa-clock pt-1"></i>
+                                                    </span>
+                                                    <select
+                                                        className="form-control bg-dark text-white notspan3 "
+                                                        id="time"
+                                                        value={selectedTime}
+                                                        onChange={(e) => setSelectedTime(e.target.value)}
+                                                        required
+                                                        disabled={!selectedDate}
+                                                    >
+                                                        <option className="option2" value="">Select a time</option>
+                                                        {allHours.map((hour) => {
+                                                            const openingHour = canchaData.apertura;
+                                                            const closingHour = canchaData.cierre;
+                                                            const disabled = !isHourAvailable(hour) || hour < openingHour || hour > closingHour;
 
-                                <div className="form-group mt-2 bg-dark ">
+                                                            return (
+                                                                <option className="option2" key={hour} value={hour} disabled={disabled}>
+                                                                    {hour} Hrs
+                                                                </option>
+                                                            );
+                                                        })}
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                                    <label htmlFor="date  ">
-                                        <span className="notspan input-group-text text-white border-0 justify-content-center bg-dark pb-2 " id="inputGroup-sizing-sm"><i className="fa-regular fa-calendar-days"></i></span>
+                                        </div>
+                                    </div>
 
-                                    </label>
+                                    <div className="form-group mt-5">
+                                        <button
+                                            className="btn btn-primary btn-block gap-2"
+                                            disabled={!selectedTime}
+                                            type="submit"
+                                        >
+                                            {selectedTime ? (
+                                                <FontAwesomeIcon icon={faHandshakeSimple} beat />
+                                            ) : (
+                                                <FontAwesomeIcon icon={faHandshakeSimple} />
+                                            )}
+                                            <h4> Rent Now</h4>
+                                        </button>
+                                    </div>
 
-                                    <DatePicker
-                                        className="form-control text-white rounded-1 ml-2 bg-dark DatePicker"
-                                        placeholderText="Select a Date"
-                                        id="date"
-                                        selected={selectedDate}
-                                        onChange={(date) => setSelectedDate(date)}
-                                        dateFormat="yyyy-MM-dd"
-                                        required
-                                    />
-
-                                </div>
-                                <div className="form-group bg-dark notspan2">
-                                    <label htmlFor="time">
-                                        <span className="notspan input-group-text text-white border-0 justify-content-center bg-dark pb-3" id="inputGroup-sizing-sm">
-                                            <i className="fa-regular fa-clock pt-1"></i>
-                                        </span>
-                                    </label>
-
-                                    <select
-                                        className="form-control text-white"
-                                        id="time"
-                                        value={selectedTime}
-                                        onChange={(e) => setSelectedTime(e.target.value)}
-                                        required
-                                        disabled={!selectedDate}
-                                    >
-                                        <option className="option2" value="">Select a time</option>
-                                        {allHours.map((hour) => {
-                                            const openingHour = canchaData.apertura;
-                                            const closingHour = canchaData.cierre;
-                                            const disabled = !isHourAvailable(hour) || hour < openingHour || hour > closingHour;
-
-                                            return (
-                                                <option className="option2" key={hour} value={hour} disabled={disabled}>
-                                                    {hour} Hrs
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-
-                                <div className="form-group">
-                                    {/* <div className="form-check"><label className="form-check-label"><input className="form-check-input" type="checkbox" />I agree to the license terms.</label></div> */}
-                                </div>
-                                <div className="form-group">
-                                    <button
-                                        className="btn btn-primary btn-block"
-                                        disabled={!selectedTime}
-                                        type="submit">Rent Now
-                                    </button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,7 +298,6 @@ const RentInformationCard = () => {
 };
 
 export default RentInformationCard;
-
 
 
 

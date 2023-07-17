@@ -2,17 +2,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/CanchaCard.css";
 import { Context } from "../store/appContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBaseballBatBall, faBasketball, faFootball, faTableTennisPaddleBall, faVolleyball, faHandshake, faClock } from '@fortawesome/free-solid-svg-icons';
 
 const CanchaCard = ({ cancha }) => {
   const { store, actions } = useContext(Context);
   const [owner, setOwner] = useState({});
   const imageUrl = cancha.img || "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png";
   const canchaTypeIcon = {
-    Tennis: <i className="fa-solid fa-racquet"></i>,
-    Football: <i className="fa-solid fa-futbol"></i>,
-    Paddle: <i className="fa-solid fa-table-tennis-paddle-ball"></i>,
-    Basketball: <i className="fa-solid fa-basketball"></i>,
-    BabyFootball: <i className="fa-duotone fa-futbol"></i>
+    Tennis: <FontAwesomeIcon icon={faBaseballBatBall} />,
+    Football: <FontAwesomeIcon icon={faFootball} />,
+    Paddle: <FontAwesomeIcon icon={faTableTennisPaddleBall} />,
+    Basketball: <FontAwesomeIcon icon={faBasketball} />,
+    BabyFootball: <FontAwesomeIcon icon={faVolleyball} />
   };
 
 
@@ -46,13 +48,16 @@ const CanchaCard = ({ cancha }) => {
               </time>
             </div>
             <div className="postcard__bar"></div>
+            <li className="list-unstyled"> $ {cancha.precio} (per hour)</li>
+            <li className="list-unstyled"> <FontAwesomeIcon icon={faClock} /> {cancha.apertura}:00 Hrs to {cancha.cierre}:00 Hrs </li>
             <ul className="postcard__tagbox">
-              <li className="tag__item">
-                {getSportTypeIcon() || <i className="fas fa-tag mr-2"></i>} {cancha.sportType}
+              <li className="tag__item ">
+                {getSportTypeIcon() || <i className="fas fa-tag mr-2 "> </i>} {cancha.sportType}
               </li>
+
               <li className="tag__item play blue btn">
                 <Link to={`/rent/${cancha?.id}`}>
-                  <i className="fas fa-basketball-ball mr-2"></i> Rent
+                  <FontAwesomeIcon icon={faHandshake} /> <strong>Rent</strong>
                 </Link>
               </li>
             </ul>

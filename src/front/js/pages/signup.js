@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 import { Context } from "../store/appContext";
+import UploadWidget from "../component/UploadWidget";
 
 export const Signup = () => {
     const { actions } = useContext(Context)
@@ -16,6 +17,7 @@ export const Signup = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [showError, setShowError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("")
+
 
     const handleFocusEmail = (e) => {
         setFocused(true)
@@ -92,5 +94,6 @@ export const Signup = () => {
                 </div>
             </div>
         </section>
+
     )
 }

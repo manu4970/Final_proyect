@@ -12,7 +12,7 @@ export const Login2 = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate()
 
-    const handleClick = () => {
+    const handleClick = (event) => {
         event.preventDefault()
         setIsLoading(true)
         actions.login(email, pass).then(() => {
