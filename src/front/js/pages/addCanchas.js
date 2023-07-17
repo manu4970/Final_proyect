@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UploadWidget from "../component/UploadWidget";
 import { Context } from "../store/appContext";
 import regiones from "../store/regiones";
-import UploadWidget from "../component/UploadWidget";
 
 export const AddCanchas = () => {
     const { store, actions } = useContext(Context)
@@ -27,9 +27,9 @@ export const AddCanchas = () => {
     const sportTypes = ["Tennis", "Football", "Paddle", "Basketball", "Baby Football"]
     const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
     const [horasCierre, setHorasCierre] = useState([])
+    const [img, setImg] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [showError, setShowError] = useState(false);
-    const [img, setImg] = useState("")
 
 
     const handlePictureUpload = (uploadedPicture) => {
