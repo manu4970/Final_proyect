@@ -47,7 +47,7 @@ export const Signup = () => {
 
 
     return (
-        <section className="pt-5 pb-5 mt-0 align-items-center d-flex">
+        <section className="pt-5 pb-5 mt-5 align-items-center d-flex">
             <div className='container-fluid' >
                 <div className="row  justify-content-center align-items-center d-flex-row text-center h-100">
                     <div className="col-12 col-md-4 col-lg-3 h-50 ">
