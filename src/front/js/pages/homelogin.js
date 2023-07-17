@@ -6,6 +6,11 @@ import { Context } from "../store/appContext";
 
 export const HomeLogin = () => {
     const [comunasRegion, setcomunasRegion] = useState([])
+    const [filteredRegion, setFilteredRegion] = useState("")
+    const [selectedRegion, setSelectedRegion] = useState("");
+    const [selectedComuna, setSelectedComuna] = useState("");
+
+
     const comunas = [
         {
             region: "Metropolitana",
@@ -108,37 +113,49 @@ export const HomeLogin = () => {
     ]
     function buscarComunas(e) {
         e.preventDefault()
-        if (e.target.value == "7") {
+        const regionValue = e.target.value;
+        setSelectedRegion(regionValue);
+        setSelectedComuna(""); // Clear selected commune value when a new region is selected
+
+        const filteredComunas = comunas.find((comuna) => comuna.region === regionValue);
+        if (filteredComunas) {
+            setcomunasRegion([...filteredComunas.comunas]);
+        } else {
+            setcomunasRegion([]);
+        }
+
+        setSelectedRegion(regionValue);
+        if (e.target.value == "1") {
             let comunasSelect = comunas[0].comunas
             setcomunasRegion([...comunasSelect])
         }
 
-        if (e.target.value == "6") {
+        if (e.target.value == "2") {
             let comunasSelect = comunas[1].comunas
             setcomunasRegion([...comunasSelect])
         }
 
-        if (e.target.value == "1") {
+        if (e.target.value == "3") {
             let comunasSelect = comunas[2].comunas
             setcomunasRegion([...comunasSelect])
         }
 
-        if (e.target.value == "2") {
+        if (e.target.value == "4") {
             let comunasSelect = comunas[3].comunas
             setcomunasRegion([...comunasSelect])
         }
 
-        if (e.target.value == "3") {
+        if (e.target.value == "5") {
             let comunasSelect = comunas[4].comunas
             setcomunasRegion([...comunasSelect])
         }
 
-        if (e.target.value == "4") {
+        if (e.target.value == "6") {
             let comunasSelect = comunas[5].comunas
             setcomunasRegion([...comunasSelect])
         }
 
-        if (e.target.value == "5") {
+        if (e.target.value == "7") {
             let comunasSelect = comunas[6].comunas
             setcomunasRegion([...comunasSelect])
         }
@@ -202,21 +219,27 @@ export const HomeLogin = () => {
         })
     }, []);
 
-    console.log(store.canchas)
+
+    const filteredCanchas = filteredRegion
+        ? store.canchas.filter((cancha) => cancha.region.includes(filteredRegion))
+        : store.canchas;
+
+
+    console.log(filteredCanchas)
 
     return (
         <>
             <div className="container-fluid d-flex align-items-center justify-content-center">
                 <div className="d-flex p-3 gap-2">
-                    <select className="form-select " aria-label=".form-select-sm example" onChange={e => buscarComunas(e)}>
+                    <select className="form-select " defaultValue={selectedRegion} aria-label=".form-select-sm example" onChange={e => { buscarComunas(e); setFilteredRegion(e.target.value); }}>
                         <option value="">Region</option>
-                        <option value="1">Arica y Parinacota</option>
-                        <option value="2">Tarapaca</option>
-                        <option value="3">Antofagasta</option>
-                        <option value="4">Atacama</option>
-                        <option value="5">Coquimbo</option>
-                        <option value="6">Valparaíso</option>
-                        <option value="7">Metropolitana</option>
+                        <option value="1">Metropolitana</option>
+                        <option value="2">Valparaíso</option>
+                        <option value="3">Arica y Parinacota</option>
+                        <option value="4">Tarapaca</option>
+                        <option value="5">Antofagasta</option>
+                        <option value="6">Atacama</option>
+                        <option value="7">Coquimbo</option>
                         <option value="8">O'Higgins</option>
                         <option value="9">Maule</option>
                         <option value="10">Ñuble</option>
@@ -227,7 +250,8 @@ export const HomeLogin = () => {
                         <option value="15">Aysén</option>
                         <option value="16">Magallanes</option>
                     </select>
-                    <select className="form-select" aria-label=".form-select-sm example" form-select-bg-size="true" defaultValue="defaultComuna">
+                    <select className="form-select" aria-label=".form-select-sm example" form-select-bg-size="true" defaultValue="defaultComuna" onChange={(e) => setSelectedComuna(e.target.value)}
+                    >
                         <option value="">Commune</option>
                         {
                             comunasRegion.map((comuna, index) =>
@@ -251,12 +275,18 @@ export const HomeLogin = () => {
 
             </div>
             <section>
-                <div className="">
-                    <div className=" parent col-sm-12 mb-3 mb-sm-6 align-items-center justify-content-center ms-left">
-                        {store.canchas.map(cancha =>
-                            <CanchaCard className="" key={cancha.id} cancha={cancha} />
-                        )}
-                    </div>
+                <div className="parent col-sm-12 mb-3 mb-sm-6 align-items-center justify-content-center ms-left">
+                    {selectedComuna
+                        ? store.canchas
+                            .filter((cancha) => cancha.region.includes(selectedRegion) && cancha.comuna.includes(selectedComuna))
+                            .map((cancha) => (
+                                <CanchaCard className="" key={cancha.id} cancha={cancha} />
+                            ))
+                        : store.canchas
+                            .filter((cancha) => cancha.region.includes(selectedRegion))
+                            .map((cancha) => (
+                                <CanchaCard className="" key={cancha.id} cancha={cancha} />
+                            ))}
                 </div>
             </section>
         </>
