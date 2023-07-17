@@ -25,6 +25,7 @@ export const Login2 = () => {
                 setShowError(false)
                 setShowError(true)
                 navigate("/")
+                window.location.reload(false)
             }
         })
 

@@ -62,7 +62,7 @@ export const Home = () => {
 						</Link>
 					</div>
 					<div className="btnhome">
-						<Link className="btnhome btn-lg btn-dark" to="/addcanchas">
+						<Link className="btnhome btn-lg btn-dark" to={logged ? "/addcanchas" : "/login"}>
 							<span>Add your spot</span>
 						</Link>
 					</div>

@@ -89,6 +89,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sessionStorage.setItem("auth_token", data.auth_token)
 					sessionStorage.setItem("id", data.id)
 					sessionStorage.setItem("isLoggedIn", "true")
+
 					return true
 
 				}
@@ -155,7 +156,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					const data = await resp.json()
-					console.log(data)
 					setStore({ user: data })
 					return data
 
@@ -187,6 +187,69 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return null;
 				}
 			},
+
+			putCancha: async (cancha_id, name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id, img) => {
+				const options = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						"name": name,
+						"location": location,
+						"region": region,
+						"comuna": comuna,
+						"apertura": apertura,
+						"cierre": cierre,
+						"precio": precio,
+						"user_id": user_id,
+						"sportType": sportType,
+						"cantidadCanchas": cantidad,
+						"detalle": detalle,
+						"is_available": is_available,
+						"img": img
+					})
+				};
+				try {
+					const resp = await fetch("https://ss-api-render-2.onrender.com/canchas/" + cancha_id, options);
+					if (resp.status !== 200) {
+						alert("Error fetching cancha");
+						return null;
+					}
+
+					const data = await resp.json();
+					console.log(data);
+					return data;
+				} catch (error) {
+					console.error("Error in getCancha:", error);
+					return null;
+				}
+			},
+
+			deleteCancha: async (cancha_id) => {
+				const options = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				};
+				try {
+					const resp = await fetch("https://ss-api-render-2.onrender.com/canchas/" + cancha_id, options);
+					if (resp.status !== 200) {
+						alert("Error fetching cancha");
+						return null;
+					}
+
+					const data = await resp.json();
+					console.log(data);
+					return data;
+				} catch (error) {
+					console.error("Error in getCancha:", error);
+					return null;
+				}
+			},
+
+
 
 			pushCancha: async (name, location, region, comuna, apertura, cierre, precio, sportType, cantidad, detalle, is_available, user_id, img) => {
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png";
 import "../../styles/CanchaCard.css";
@@ -7,24 +7,34 @@ import "../../styles/navbar.css";
 import { Context } from "../store/appContext";
 
 export function Navbar() {
-  const { store } = useContext(Context);
+  const { actions, store } = useContext(Context);
   const navigate = useNavigate();
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [lastname, setLastname] = useState("");
+  const sessionId = sessionStorage.getItem('id')
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleClickLogOut = () => {
-    // window.location.reload(false)
+    window.location.reload(false)
     sessionStorage.removeItem("auth_token")
     sessionStorage.removeItem("id")
     sessionStorage.removeItem("isLoggedIn")
     navigate("/");
   };
 
-  if (sessionStorage.getItem("isLoggedIn") === "true") {
-    store.isLoggedIn = true
-  } else {
-    store.isLoggedIn = false
-  }
+  useEffect(() => {
+    if (isLoggedIn) {
+      actions.getUser(sessionId);
+    }
+  }, [isLoggedIn, sessionId]);
+
+  useEffect(() => {
+    setIsLoggedIn(sessionStorage.getItem("isLoggedIn") === "true");
+  }, []);
 
   const handleClickLogIn = () => {
+
     navigate("/login")
   };
 
@@ -35,12 +45,12 @@ export function Navbar() {
         <Link className="navbar-brand text-uppercase fw-bold" to="/" >Sport Spot</Link>
         <div className="Foo d-flex ms-auto" style={{ paddingRight: "10px" }}>
           <div>
-            {store.isLoggedIn ?
+            {isLoggedIn ?
               (<button className="btn ms-auto text-light" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogOut}>Logout</button>)
               :
               (<button className="btn ms-auto text-light" style={{ paddingRight: "10px" }} type="button" onClick={handleClickLogIn}>Login</button>)}
           </div>
-          {store.isLoggedIn ?
+          {isLoggedIn ?
             (
               <div className="row">
                 <div className="col">
@@ -48,20 +58,30 @@ export function Navbar() {
                     <div className="dropdown">
                       <div className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                         <Link to="/profile">
-                          <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                          <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                          />
                         </Link>
                       </div>
-                      <ul className="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331" }}>
-                        <span className="d-flex text-light p-2">
+
+
+                      <ul className="dropdown-menu dropdown-menu-end text-light" style={{ background: "#1C2331", width: "250px" }}>
+                        <span className="d-flex text-light align-items-center gap-3">
+
                           <span className="rounded-circle overflow-hidden dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "40px", height: "40px", marginLeft: "10px" }}>
                             <img src="https://i1.sndcdn.com/avatars-000733526755-v9y8eh-t500x500.jpg" alt="User Picture" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                           </span>
-                          <li><p>Manuel Perez</p></li>
-                          <li><p>manu@admin.com</p></li>
-
+                          <li>
+                            <span className="">
+                              <h4 className="mb-0">{store.user.name} {store.user.lastname}</h4>
+                              <p className="mb-0">{store.user.email}</p>
+                            </span>
+                          </li>
                         </span>
-                        <li><a className="dropdown-item text-white" href="/homelogin">Rent a spot</a></li>
-                        <li><a className="dropdown-item text-white" href="/admin">Admin your spot</a></li>
+
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item text-white" href="/homelogin">Rent a spot</a></li>
+                        <li><a class="dropdown-item text-white" href="/admin">Administrate</a></li>
+
                       </ul>
                     </div>
                   </div>
